@@ -11,7 +11,7 @@ export type Theme = {
     light: string;
     dark: string;
   };
-  primaryColor: string;
+  primaryColor: keyof typeof defaultColors;
   primaryShades: {
     light: number;
     dark: number;

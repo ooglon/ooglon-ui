@@ -1,9 +1,28 @@
-import { Text, View } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { Text } from "../text";
+import { makeStyles } from "../theme";
 
-export function Button() {
+type ButtonProps = {
+  title: string;
+} & TouchableOpacityProps;
+
+// TODO:Check mantine button for variants and custom props
+
+export function Button({ title, ...rest }: ButtonProps) {
+  const styles = useStyles();
+
   return (
-    <View>
-      <Text>index</Text>
-    </View>
+    <TouchableOpacity {...rest} style={styles.container}>
+      <Text>{title}</Text>
+    </TouchableOpacity>
   );
 }
+
+const useStyles = makeStyles(({ theme, colorScheme }) => ({
+  container: {
+    padding: theme.spacing.md,
+    borderRadius: theme.radius[theme.defaultRadius],
+    backgroundColor:
+      theme.colors[theme.primaryColor][theme.primaryShades[colorScheme]],
+  },
+}));
