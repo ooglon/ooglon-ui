@@ -12,7 +12,7 @@ type TextProps = {
   style?: StyleProp<TextStyle>;
 };
 
-export default function Text({
+export function Text({
   children,
   c,
   fz,

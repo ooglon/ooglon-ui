@@ -4,8 +4,8 @@ import Constants from "expo-constants";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, View } from "react-native";
 
-import Icon from "../icon";
-import Text from "../text";
+import { Icon } from "../icon";
+import { Text } from "../text";
 import { makeStyles, useTheme } from "../theme";
 import { useShadowStyle } from "../theme/default-styles";
 import { HEADER_HEIGHT } from "./constants";

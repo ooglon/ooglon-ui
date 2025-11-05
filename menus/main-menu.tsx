@@ -1,5 +1,4 @@
-import { useTheme } from "@/lib/ui";
-import { AppHeader } from "@/lib/ui/header";
+import { AppHeader, useTheme } from "@/lib/ui";
 import t from "@/services/lang";
 
 export default function MainMenu() {

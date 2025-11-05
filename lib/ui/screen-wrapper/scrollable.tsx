@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useCallback } from "react";
+import { PropsWithChildren, useCallback, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -21,7 +21,7 @@ export default function Scrollable({
 }: ScrollableProps) {
   const styles = useStyles({ padding });
 
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const onRefreshWrapper = useCallback(async () => {
     if (onRefresh) {

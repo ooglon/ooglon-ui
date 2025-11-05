@@ -4,7 +4,7 @@ OOGLON UI Lib for React Native.
 
 ## Usage
 
-1. Create a new Exoi project: `yarn create expo --template`
+1. Create a new Expo project: `yarn create expo --template`
 
 2. Select template `Navigation (TypeScript) - File-based routing with TypeScript enabled`
 
@@ -18,7 +18,7 @@ OOGLON UI Lib for React Native.
 
 ## TODO-List
 
-Seguir para criação de components:
+Components:
 
 - Button
 - Card
@@ -32,6 +32,8 @@ Seguir para criação de components:
 
 Add real links to main-menu.
 
-Ajustar cores de background e foreground em default-theme (usar algum tema light/dark como referência)
+Adjust default-theme background and foreground colors (search for a good design as reference).
 
-Confirmar se fontFamily está sendo aplicado no iOS.
+Confirm if fontFamily is being applied for iOS.
+
+Add App screenshots to readme :)

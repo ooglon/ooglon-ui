@@ -2,11 +2,10 @@ import { useFocusEffect } from "expo-router";
 import { PropsWithChildren, useCallback, useState } from "react";
 import { Dimensions, Pressable, TouchableOpacity } from "react-native";
 
-import Flex from "../../flex";
+import { Flex } from "../../flex";
+import { Icon } from "../../icon";
 import { makeStyles, useTheme } from "../../theme";
 import { useShadowStyle } from "../../theme/default-styles";
-
-import Icon from "../../icon";
 import { HEADER_HEIGHT } from "../constants";
 import HeaderMenuDivider from "./divider";
 import HeaderMenuItem from "./item";

@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native";
 
-import Icon, { IconType } from "../../icon";
-import Text from "../../text";
+import { Icon, IconType } from "../../icon";
+import { Text } from "../../text";
 import { makeStyles } from "../../theme";
 
 type HeaderMenuItemProps = {

@@ -24,13 +24,7 @@ type IconProps = {
   style?: StyleProp<TextStyle>;
 } & IconType;
 
-export default function Icon({
-  type,
-  name,
-  size = 24,
-  color,
-  style,
-}: IconProps) {
+export function Icon({ type, name, size = 24, color, style }: IconProps) {
   const { theme, colorScheme } = useTheme();
 
   // @ts-ignore

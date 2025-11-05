@@ -1,7 +1,6 @@
 import { Stack } from "expo-router";
 
-import { ScreenWrapper } from "@/lib/ui";
-import Text from "@/lib/ui/text";
+import { ScreenWrapper, Text } from "@/lib/ui";
 
 export default function _screen() {
   return (

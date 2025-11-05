@@ -6,8 +6,7 @@ import { useEffect } from "react";
 
 import "react-native-reanimated";
 
-import { ThemeProvider } from "@/lib/ui";
-import { AppHeader } from "@/lib/ui/header";
+import { AppHeader, ThemeProvider } from "@/lib/ui";
 import MainMenu from "@/menus/main-menu";
 
 // ----------------------------------------------------------- Root Layout:

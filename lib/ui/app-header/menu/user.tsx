@@ -1,8 +1,8 @@
 import { Dimensions } from "react-native";
 
-import Avatar from "../../avatar";
-import Flex from "../../flex";
-import Text from "../../text";
+import { Avatar } from "../../avatar";
+import { Flex } from "../../flex";
+import { Text } from "../../text";
 import { makeStyles } from "../../theme";
 
 type HeaderMenuUserProps = {

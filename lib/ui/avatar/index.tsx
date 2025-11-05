@@ -8,7 +8,7 @@ type AvatarProps = {
   style?: ImageStyle;
 };
 
-export default function Avatar({ avatarUrl, size = 64, style }: AvatarProps) {
+export function Avatar({ avatarUrl, size = 64, style }: AvatarProps) {
   const styles = useStyles({ size });
 
   return <Image style={[styles.avatar, style]} source={{ uri: avatarUrl }} />;

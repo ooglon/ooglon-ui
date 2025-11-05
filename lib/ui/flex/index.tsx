@@ -13,7 +13,7 @@ type FlexProps = {
   grow?: number;
 } & ViewProps;
 
-export default function Flex({
+export function Flex({
   children,
   direction = "column",
   align,
