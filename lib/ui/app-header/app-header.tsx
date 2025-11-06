@@ -34,7 +34,7 @@ export function AppHeader(props: NativeStackHeaderProps) {
           <View />
         )}
 
-        <Text fw="bold" fz={16} style={styles.title}>
+        <Text fontWeight="bold" fontSize={16} style={styles.title}>
           {props.options.title}
         </Text>
 

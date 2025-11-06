@@ -24,7 +24,7 @@ export default function HeaderMenuUser({
       gap="md"
       style={styles.container}
     >
-      <Text ta="right">{name}</Text>
+      <Text textAlign="right">{name}</Text>
 
       <Avatar avatarUrl={avatarUrl} size={28} />
     </Flex>

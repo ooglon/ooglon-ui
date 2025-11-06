@@ -16,8 +16,14 @@ export const defaultTheme: Theme = {
   },
   primaryColor: "blue",
   primaryShades: {
-    light: 6,
-    dark: 8,
+    light: {
+      background: 6,
+      foreground: 6,
+    },
+    dark: {
+      background: 8,
+      foreground: 2,
+    },
   },
   // typography
   fontFamily: "Roboto-Regular",

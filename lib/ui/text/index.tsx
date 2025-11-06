@@ -4,31 +4,31 @@ import { useTheme } from "../theme";
 
 type TextProps = {
   children: React.ReactNode;
-  c?: ColorValue;
-  fz?: number;
-  fw?: TextStyle["fontWeight"];
-  fs?: TextStyle["fontStyle"];
-  ta?: TextStyle["textAlign"];
+  color?: ColorValue;
+  fontSize?: number;
+  fontWeight?: TextStyle["fontWeight"];
+  fontStyle?: TextStyle["fontStyle"];
+  textAlign?: TextStyle["textAlign"];
   style?: StyleProp<TextStyle>;
 };
 
 export function Text({
   children,
-  c,
-  fz,
-  fw,
-  fs,
-  ta,
+  color,
+  fontSize,
+  fontWeight,
+  fontStyle,
+  textAlign,
   style: customStyle,
 }: TextProps) {
   const { theme, colorScheme } = useTheme();
 
   const style: StyleProp<TextStyle> = {
-    color: c || theme.foregroundColor[colorScheme],
-    fontSize: fz || 15,
-    fontWeight: fw || "normal",
-    fontStyle: fs || "normal",
-    textAlign: ta || "left",
+    color: color || theme.foregroundColor[colorScheme],
+    fontSize: fontSize || 15,
+    fontWeight: fontWeight || "normal",
+    fontStyle: fontStyle || "normal",
+    textAlign: textAlign || "left",
     fontFamily: theme.fontFamily,
   };
 

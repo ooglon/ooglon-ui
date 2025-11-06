@@ -13,8 +13,14 @@ export type Theme = {
   };
   primaryColor: keyof typeof defaultColors;
   primaryShades: {
-    light: number;
-    dark: number;
+    light: {
+      background: number;
+      foreground: number;
+    };
+    dark: {
+      background: number;
+      foreground: number;
+    };
   };
   // typography
   fontFamily: string;
