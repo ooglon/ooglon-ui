@@ -12,11 +12,9 @@ import { HEADER_HEIGHT } from "./constants";
 import HeaderMenu from "./menu";
 
 export function AppHeader(props: NativeStackHeaderProps) {
-  const { colorScheme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const styles = useStyles();
-  const { defaultShadow } = useShadowStyle({
-    size: "xl",
-  });
+  const { defaultShadow } = useShadowStyle();
 
   return (
     <View style={styles.container}>
@@ -34,7 +32,11 @@ export function AppHeader(props: NativeStackHeaderProps) {
           <View />
         )}
 
-        <Text fontWeight="bold" fontSize={16} style={styles.title}>
+        <Text
+          fontWeight="bold"
+          fontSize={theme.fontSize + 2}
+          style={styles.title}
+        >
           {props.options.title}
         </Text>
 
@@ -51,7 +53,7 @@ const useStyles = makeStyles(({ theme, colorScheme }) => ({
   inner: {
     borderBottomLeftRadius: theme.radius[theme.defaultRadius],
     borderBottomRightRadius: theme.radius[theme.defaultRadius],
-    backgroundColor: theme.backgroundColor[colorScheme],
+    backgroundColor: colorScheme === "light" ? "white" : theme.colors.dark[4],
     height: HEADER_HEIGHT,
     paddingTop: Constants.statusBarHeight,
     flexDirection: "row",

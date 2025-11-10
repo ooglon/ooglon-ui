@@ -1,96 +1,192 @@
 import { Stack } from "expo-router";
 
-import { Button, Flex, Icon, ScreenWrapper, Text } from "@/lib/ui";
+import { Badge, Button, Card, Flex, Icon, ScreenWrapper, Text } from "@/lib/ui";
+import { ToggleableContent } from "@/lib/ui/toggleable-content";
 
 export default function _screen() {
   return (
     <ScreenWrapper.Scrollable>
       <Stack.Screen options={{ headerShown: true, title: "Home" }} />
 
-      <Text>Buttons</Text>
+      <Card>
+        <Card.Header
+          title="Headings Card"
+          rightSection={<Badge color="red">Hot!</Badge>}
+        />
 
-      <Button
-        title="Filled"
-        variant="filled"
-        onPress={() => console.log("pressed")}
-      />
-      <Button
-        title="Light"
-        variant="light"
-        onPress={() => console.log("pressed")}
-      />
-      <Button
-        title="Outline"
-        variant="outline"
-        onPress={() => console.log("pressed")}
-      />
-      <Button
-        title="Subtle"
-        variant="subtle"
-        onPress={() => console.log("pressed")}
-      />
+        <Card.Divider />
 
-      <Button
-        title="Button xs"
-        size="xs"
-        color="red"
-        onPress={() => console.log("pressed")}
-      />
-      <Button
-        title="Button sm"
-        size="sm"
-        color="green"
-        onPress={() => console.log("pressed")}
-      />
-      <Button
-        title="Button md"
-        size="md"
-        color="indigo"
-        onPress={() => console.log("pressed")}
-      />
-      <Button
-        title="Button lg"
-        size="lg"
-        color="yellow"
-        onPress={() => console.log("pressed")}
-      />
-      <Button
-        title="Button xl"
-        size="xl"
-        color="orange"
-        onPress={() => console.log("pressed")}
-      />
+        <Text h1 firstChild>
+          Heading H1
+        </Text>
+        <Text textAlign="justify">
+          [textAlign="justify"] Lorem Ipsum is simply dummy text of the printing
+          and typesetting industry. Lorem Ipsum has been the industry's standard
+          dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book.
+        </Text>
 
-      <Flex direction="row" gap={0}>
+        <ToggleableContent>
+          <Text h2 firstChild>
+            Heading H2
+          </Text>
+          <Text fontStyle="italic">
+            [fontStyle="italic"] Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book.
+          </Text>
+
+          <Text h3>Heading H3</Text>
+          <Text fontWeight="bold">
+            [fontWeight="bold"] Lorem Ipsum is simply dummy text of the printing
+            and typesetting industry. Lorem Ipsum has been the industry's
+            standard dummy text ever since the 1500s, when an unknown printer
+            took a galley of type and scrambled it to make a type specimen book.
+          </Text>
+
+          <Text h4>Heading H4</Text>
+          <Text style={{ textTransform: "capitalize" }}>
+            [customStyle with textTransform:"capitalize"] Lorem Ipsum is simply
+            dummy text of the printing and typesetting industry. Lorem Ipsum has
+            been the industry's standard dummy text ever since the 1500s, when
+            an unknown printer took a galley of type and scrambled it to make a
+            type specimen book.
+          </Text>
+        </ToggleableContent>
+      </Card>
+
+      <Card>
+        <Card.Header
+          title="Buttons Card"
+          rightSection={
+            <Icon type="material-community" name="dots-horizontal" />
+          }
+        />
+
         <Button
-          title="Full Width"
-          fullWidth
+          title="Filled"
+          variant="filled"
           onPress={() => console.log("pressed")}
         />
-        <Button
-          title="Custom Styles"
-          size="md"
-          onPress={() => console.log("pressed")}
-          containerStyle={{ backgroundColor: "pink" }}
-          textStyle={{ color: "black", fontWeight: "regular" }}
-        />
-      </Flex>
 
-      <Button
-        title="Sections"
-        leftSection={<Icon type="material" name="phone" color="white" />}
-        rightSection={
-          <Icon type="material-community" name="dots-square" color="white" />
-        }
-        justify="space-between"
-        onPress={() => console.log("pressed")}
-      />
+        <ToggleableContent>
+          <Button
+            title="Light"
+            variant="light"
+            onPress={() => console.log("pressed")}
+          />
 
-      <Button
-        title="Disabled"
-        disabled
-        onPress={() => console.log("pressed")}
-      />
+          <Button
+            title="Outline"
+            variant="outline"
+            onPress={() => console.log("pressed")}
+          />
+
+          <Button
+            title="Subtle"
+            variant="subtle"
+            onPress={() => console.log("pressed")}
+          />
+
+          <Button
+            title="Button xs"
+            size="xs"
+            color="red"
+            onPress={() => console.log("pressed")}
+          />
+          <Button
+            title="Button sm"
+            size="sm"
+            color="green"
+            onPress={() => console.log("pressed")}
+          />
+          <Button
+            title="Button md"
+            size="md"
+            color="indigo"
+            onPress={() => console.log("pressed")}
+          />
+          <Button
+            title="Button lg"
+            size="lg"
+            color="yellow"
+            onPress={() => console.log("pressed")}
+          />
+          <Button
+            title="Button xl"
+            size="xl"
+            color="orange"
+            onPress={() => console.log("pressed")}
+          />
+
+          <Flex direction="row" gap={0}>
+            <Button
+              title="Full Width"
+              fullWidth
+              onPress={() => console.log("pressed")}
+            />
+            <Button
+              title="Custom Styles"
+              size="md"
+              onPress={() => console.log("pressed")}
+              containerStyle={{ backgroundColor: "pink" }}
+              textStyle={{ color: "black", fontWeight: "regular" }}
+            />
+          </Flex>
+
+          <Button
+            title="Sections"
+            leftSection={<Icon type="material" name="phone" color="white" />}
+            rightSection={
+              <Icon
+                type="material-community"
+                name="dots-square"
+                color="white"
+              />
+            }
+            justify="space-between"
+            onPress={() => console.log("pressed")}
+          />
+
+          <Button
+            title="Disabled"
+            disabled
+            onPress={() => console.log("pressed")}
+          />
+        </ToggleableContent>
+      </Card>
+
+      <Card>
+        <Card.Header title="Badges Card" />
+
+        <Flex direction="row" wrap="wrap" align="center">
+          <Badge size="xs" color="green">
+            XS
+          </Badge>
+
+          <Badge size="sm" color="lime">
+            SM
+          </Badge>
+
+          <Badge size="md" color="blue">
+            MD
+          </Badge>
+
+          <Badge size="lg" color="yellow">
+            LG
+          </Badge>
+
+          <Badge size="xl" color="orange">
+            XL
+          </Badge>
+
+          <Badge color="red">
+            <Icon type="material" name="notification-add" color="white" />
+          </Badge>
+        </Flex>
+      </Card>
     </ScreenWrapper.Scrollable>
   );
 }

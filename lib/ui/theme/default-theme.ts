@@ -27,7 +27,7 @@ export const defaultTheme: Theme = {
   },
   // typography
   fontFamily: "Roboto-Regular",
-  fontSize: 16,
+  fontSize: 15, // React Native default
   // borders
   radius: {
     xs: 2,

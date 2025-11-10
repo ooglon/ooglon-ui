@@ -20,12 +20,11 @@ OOGLON UI Lib for React Native.
 
 Components:
 
-- [WIP] Button
-- Card
+- [WIP] Card
 - Input
 - CheckBox
 - Dialog
-- Badge
+- [WIP] Badge
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
 
 Add real links to main-menu.

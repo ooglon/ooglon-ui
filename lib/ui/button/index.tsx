@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   StyleProp,
   TextStyle,
@@ -6,7 +7,6 @@ import {
   ViewStyle,
 } from "react-native";
 
-import { ReactNode } from "react";
 import { Flex } from "../flex";
 import { Text } from "../text";
 import { makeStyles } from "../theme";

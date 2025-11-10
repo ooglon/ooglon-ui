@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import { View, ViewProps } from "react-native";
+import { FlexStyle, View, ViewProps } from "react-native";
 
 import { useTheme } from "../theme";
 
-type FlexProps = {
+export type FlexProps = {
   children: ReactNode;
   direction?: "row" | "column" | "row-reverse" | "column-reverse";
   align?: "flex-start" | "flex-end" | "center" | "stretch";
@@ -11,6 +11,7 @@ type FlexProps = {
   justify?: "flex-start" | "flex-end" | "center" | "space-between";
   shrink?: number;
   grow?: number;
+  wrap?: FlexStyle["flexWrap"];
 } & ViewProps;
 
 export function Flex({
@@ -21,6 +22,7 @@ export function Flex({
   justify,
   shrink,
   grow,
+  wrap,
   style,
   ...rest
 }: FlexProps) {
@@ -43,6 +45,7 @@ export function Flex({
           justifyContent: justify,
           flexShrink: shrink,
           flexGrow: grow,
+          flexWrap: wrap,
         },
         style,
       ]}

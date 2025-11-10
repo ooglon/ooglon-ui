@@ -1,6 +1,14 @@
 import { ColorValue, Text as RNText, StyleProp, TextStyle } from "react-native";
 
 import { useTheme } from "../theme";
+import { useHeadingStyle } from "./heading";
+
+type HeadingProps =
+  | { h1?: never; h2?: never; h3?: never; h4?: never; firstChild?: never }
+  | { h1: true; h2?: never; h3?: never; h4?: never; firstChild?: boolean }
+  | { h2: true; h1?: never; h3?: never; h4?: never; firstChild?: boolean }
+  | { h3: true; h1?: never; h2?: never; h4?: never; firstChild?: boolean }
+  | { h4: true; h1?: never; h2?: never; h3?: never; firstChild?: boolean };
 
 type TextProps = {
   children: React.ReactNode;
@@ -10,7 +18,7 @@ type TextProps = {
   fontStyle?: TextStyle["fontStyle"];
   textAlign?: TextStyle["textAlign"];
   style?: StyleProp<TextStyle>;
-};
+} & HeadingProps;
 
 export function Text({
   children,
@@ -20,17 +28,27 @@ export function Text({
   fontStyle,
   textAlign,
   style: customStyle,
+  h1,
+  h2,
+  h3,
+  h4,
+  firstChild,
 }: TextProps) {
   const { theme, colorScheme } = useTheme();
+  const headingStyle = useHeadingStyle(h1, h2, h3, h4, firstChild);
 
-  const style: StyleProp<TextStyle> = {
+  const defaultTextStyle: StyleProp<TextStyle> = {
     color: color || theme.foregroundColor[colorScheme],
-    fontSize: fontSize || 15,
+    fontSize: fontSize || theme.fontSize,
     fontWeight: fontWeight || "normal",
     fontStyle: fontStyle || "normal",
     textAlign: textAlign || "left",
     fontFamily: theme.fontFamily,
   };
 
-  return <RNText style={[style, customStyle]}>{children}</RNText>;
+  return (
+    <RNText style={[defaultTextStyle, headingStyle, customStyle]}>
+      {children}
+    </RNText>
+  );
 }
