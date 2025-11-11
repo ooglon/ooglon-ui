@@ -27,6 +27,10 @@ Components:
 - [WIP] Badge
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
 
+Create a screen with Fullscreen wrapper (e.g. login form)
+
+Persist colorScheme in theme provider.
+
 Add real links to main-menu.
 
 Adjust default-theme background and foreground colors (search for a good design as reference).
