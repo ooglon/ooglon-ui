@@ -20,14 +20,17 @@ OOGLON UI Lib for React Native.
 
 Components:
 
-- [WIP] Card
+- Form:
+  - Context? It will always re-render parent! Inputs are rendered from parent, without it props won't change! (It's OK!)
+  - form.isValid()
+  - Keep components compatible for standalone use (value + onChange/onChangeText)
+  - Maybe create a Form component with just a pre-configured Flex to standardize gap.
 - Input
 - CheckBox
 - Dialog
-- [WIP] Badge
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
 
-Create a screen with Fullscreen wrapper (e.g. login form)
+Create a screen with Fullscreen wrapper (e.g. login form). Check for keyboardawarescroll need.
 
 Persist colorScheme in theme provider.
 

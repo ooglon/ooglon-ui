@@ -1,11 +1,6 @@
 import { PropsWithChildren, useCallback, useState } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  RefreshControl,
-  ScrollView,
-  View,
-} from "react-native";
+import { RefreshControl, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 
 import { Flex } from "../flex";
 import { makeStyles } from "../theme";
@@ -36,7 +31,7 @@ export default function Scrollable({
 
   return (
     <View style={styles.container}>
-      <ScrollView
+      <KeyboardAwareScrollView
         refreshControl={
           onRefresh ? (
             <RefreshControl
@@ -46,14 +41,10 @@ export default function Scrollable({
           ) : undefined
         }
       >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "position" : "padding"}
-        >
-          <Flex gap={gap} style={styles.padding}>
-            {children}
-          </Flex>
-        </KeyboardAvoidingView>
-      </ScrollView>
+        <Flex gap={gap} style={styles.padding}>
+          {children}
+        </Flex>
+      </KeyboardAwareScrollView>
     </View>
   );
 }

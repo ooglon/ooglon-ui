@@ -1,12 +1,61 @@
 import { Stack } from "expo-router";
 
-import { Badge, Button, Card, Flex, Icon, ScreenWrapper, Text } from "@/lib/ui";
-import { ToggleableContent } from "@/lib/ui/toggleable-content";
+import {
+  Badge,
+  Button,
+  Card,
+  Flex,
+  Icon,
+  ScreenWrapper,
+  Text,
+  TextInput,
+  ToggleableContent,
+} from "@/lib/ui";
+
+import useForm from "@/lib/ui/form/use-form";
+import t from "@/services/lang";
+import { z } from "zod";
 
 export default function _screen() {
+  const form = useForm({
+    initialValues: {
+      email: "fulano@example.com",
+      password: "123",
+    },
+    validate: {
+      email: z.email(t("Email inválido!")),
+      password: z.string().min(6, t("Senha muito curta!")),
+    },
+    onSubmit: (values) => {
+      console.log("Screen:", values);
+    },
+  });
+
+  console.log("Render parent screen");
+
   return (
     <ScreenWrapper.Scrollable>
       <Stack.Screen options={{ headerShown: true, title: "Home" }} />
+
+      <Card>
+        <Card.Header title="Form Card" />
+
+        <TextInput
+          name="username"
+          label="Email"
+          {...form.getInputProps("email")}
+        />
+
+        <TextInput
+          name="password"
+          label="Password"
+          secureTextEntry
+          {...form.getInputProps("password")}
+        />
+
+        {/* <Button title="Submit" onPress={() => console.log(form.values)} /> */}
+        <Button title="Submit" onPress={form.onSubmit} />
+      </Card>
 
       <Card>
         <Card.Header

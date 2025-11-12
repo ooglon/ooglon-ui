@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { KeyboardProvider } from "react-native-keyboard-controller";
 
 import "react-native-reanimated";
 
@@ -17,17 +18,19 @@ const customFonts = {
 
 function RootLayout() {
   return (
-    <ThemeProvider defaultColorScheme="dark">
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          header: (props: any) => <AppHeader {...props} />,
-          headerRight: () => <MainMenu />,
-          headerBackVisible: true,
-          animation: "fade",
-        }}
-      />
-    </ThemeProvider>
+    <KeyboardProvider>
+      <ThemeProvider defaultColorScheme="dark">
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            header: (props: any) => <AppHeader {...props} />,
+            headerRight: () => <MainMenu />,
+            headerBackVisible: true,
+            animation: "fade",
+          }}
+        />
+      </ThemeProvider>
+    </KeyboardProvider>
   );
 }
 
