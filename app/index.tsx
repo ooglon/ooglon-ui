@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   Flex,
+  Form,
   Icon,
   ScreenWrapper,
   Text,
@@ -19,10 +20,10 @@ import { z } from "zod";
 export default function _screen() {
   const form = useForm({
     initialValues: {
-      email: "fulano@example.com",
-      password: "123",
+      email: "",
+      password: "",
     },
-    validate: {
+    validations: {
       email: z.email(t("Email inválido!")),
       password: z.string().min(6, t("Senha muito curta!")),
     },
@@ -31,8 +32,6 @@ export default function _screen() {
     },
   });
 
-  console.log("Render parent screen");
-
   return (
     <ScreenWrapper.Scrollable>
       <Stack.Screen options={{ headerShown: true, title: "Home" }} />
@@ -40,21 +39,26 @@ export default function _screen() {
       <Card>
         <Card.Header title="Form Card" />
 
-        <TextInput
-          name="username"
-          label="Email"
-          {...form.getInputProps("email")}
-        />
+        <Form>
+          <TextInput
+            name="username"
+            label="Email"
+            {...form.getInputProps("email")}
+          />
 
-        <TextInput
-          name="password"
-          label="Password"
-          secureTextEntry
-          {...form.getInputProps("password")}
-        />
+          <TextInput
+            name="password"
+            label="Password"
+            secureTextEntry
+            {...form.getInputProps("password")}
+          />
 
-        {/* <Button title="Submit" onPress={() => console.log(form.values)} /> */}
-        <Button title="Submit" onPress={form.onSubmit} />
+          <Button
+            title="Submit"
+            disabled={form.hasErrors}
+            onPress={form.submit}
+          />
+        </Form>
       </Card>
 
       <Card>

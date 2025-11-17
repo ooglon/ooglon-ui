@@ -1,3 +1,3 @@
-export { Form } from "./form-context";
+export { Form } from "./form";
 
 export { TextInput } from "./text-input";

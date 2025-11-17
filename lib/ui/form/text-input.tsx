@@ -10,28 +10,23 @@ import { makeStyles } from "../theme";
 type TextInputProps = {
   name: string;
   label?: string;
-  error?: string;
+  errors?: string[];
 } & RNTextInputProps;
 
-export function TextInput({ name, label, error, ...rest }: TextInputProps) {
+export function TextInput({ name, label, errors, ...rest }: TextInputProps) {
   const styles = useStyles();
-
-  //   const form = useForm();
-
-  console.log("render TextInput", rest.value);
 
   return (
     <Flex direction="column" gap="xs">
       {label && <Text>{label}</Text>}
 
-      <RNTextInput
-        // value={form.getFieldValue(name)}
-        // onChangeText={(value) => form.setFieldValue(name, value)}
-        style={styles.input}
-        {...rest}
-      />
+      <RNTextInput style={styles.input} {...rest} />
 
-      {error && <Text style={styles.error}>{error}</Text>}
+      {errors?.map((error, index) => (
+        <Text key={index} style={styles.error}>
+          {error}
+        </Text>
+      ))}
     </Flex>
   );
 }
