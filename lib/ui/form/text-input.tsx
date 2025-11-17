@@ -6,14 +6,14 @@ import {
 import { Flex } from "../flex";
 import { Text } from "../text";
 import { makeStyles } from "../theme";
+import FieldErrors from "./field-errors";
 
 type TextInputProps = {
-  name: string;
   label?: string;
   errors?: string[];
 } & RNTextInputProps;
 
-export function TextInput({ name, label, errors, ...rest }: TextInputProps) {
+export function TextInput({ label, errors, ...rest }: TextInputProps) {
   const styles = useStyles();
 
   return (
@@ -22,11 +22,7 @@ export function TextInput({ name, label, errors, ...rest }: TextInputProps) {
 
       <RNTextInput style={styles.input} {...rest} />
 
-      {errors?.map((error, index) => (
-        <Text key={index} style={styles.error}>
-          {error}
-        </Text>
-      ))}
+      <FieldErrors errors={errors} />
     </Flex>
   );
 }

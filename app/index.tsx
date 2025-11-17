@@ -4,6 +4,7 @@ import {
   Badge,
   Button,
   Card,
+  Checkbox,
   Flex,
   Form,
   Icon,
@@ -11,9 +12,9 @@ import {
   Text,
   TextInput,
   ToggleableContent,
+  useForm,
 } from "@/lib/ui";
 
-import useForm from "@/lib/ui/form/use-form";
 import t from "@/services/lang";
 import { z } from "zod";
 
@@ -22,10 +23,14 @@ export default function _screen() {
     initialValues: {
       email: "",
       password: "",
+      remember: false,
     },
     validations: {
       email: z.email(t("Email inválido!")),
       password: z.string().min(6, t("Senha muito curta!")),
+      remember: z
+        .boolean()
+        .refine((value) => value, t("Voce precisa marcar isto!")),
     },
     onSubmit: (values) => {
       console.log("Screen:", values);
@@ -40,17 +45,18 @@ export default function _screen() {
         <Card.Header title="Form Card" />
 
         <Form>
-          <TextInput
-            name="username"
-            label="Email"
-            {...form.getInputProps("email")}
-          />
+          <TextInput label="Email" {...form.getInputProps("email")} />
 
           <TextInput
-            name="password"
             label="Password"
             secureTextEntry
             {...form.getInputProps("password")}
+          />
+
+          <Checkbox
+            label="Remember me"
+            {...form.getBooleanInputProps("remember")}
+            // disabled
           />
 
           <Button

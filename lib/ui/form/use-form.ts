@@ -7,7 +7,7 @@ type UseFormProps = {
   onSubmit: (values: Record<string, any>) => void;
 };
 
-export default function useForm({
+export function useForm({
   initialValues,
   validations = {},
   onSubmit,
@@ -45,15 +45,33 @@ export default function useForm({
     };
   };
 
-  const isNotFilled =
-    Object.keys(errors).length !== Object.keys(initialValues).length;
+  const getBooleanInputProps = (name: string) => {
+    if (!(name in initialValues)) {
+      throw new Error(`Field "${name}" not found in initialValues`);
+    }
+
+    return {
+      checked: values[name],
+      onChange: (value: boolean) => setFieldValue(name, value),
+      errors: errors[name],
+    };
+  };
+
+  const isNotFullyValidated =
+    Object.keys(errors).length !== Object.keys(validations).length;
+
   const someFieldHasError = Object.values(errors).some(
     (error) => error.length > 0
   );
 
   return {
     getInputProps,
-    hasErrors: isNotFilled || someFieldHasError,
+    getBooleanInputProps,
+    hasErrors: isNotFullyValidated || someFieldHasError,
     submit: () => onSubmit(values),
+    reset: () => {
+      setValues(initialValues);
+      setErrors({});
+    },
   };
 }
