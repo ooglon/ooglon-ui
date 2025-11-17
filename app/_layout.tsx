@@ -7,7 +7,7 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 
 import "react-native-reanimated";
 
-import { AppHeader, ThemeProvider } from "@/lib/ui";
+import { AppHeader, Modal, ThemeProvider } from "@/lib/ui";
 import MainMenu from "@/menus/main-menu";
 
 // ----------------------------------------------------------- Root Layout:
@@ -29,6 +29,8 @@ function RootLayout() {
             animation: "fade",
           }}
         />
+
+        <Modal />
       </ThemeProvider>
     </KeyboardProvider>
   );

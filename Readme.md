@@ -10,24 +10,24 @@ OOGLON UI Lib for React Native.
 
 3. Clean it (remove components, constants, app/\* and every non-essential folder).
 
-4. Copy UI Lib [lib/ui](lib/ui/) folder into your project root.
+4. Install ui lib dependencies: `yarn add zod zustand`
 
-5. Copy [assets/fonts/](assets/fonts/) to your project.
+5. Copy UI Lib [lib/ui](lib/ui/) folder into your project root.
 
-6. Update your root layout with [app/\_layout.tsx](app/_layout.tsx) contents. Feel free to add/change "Root Layout" block, but keep ThemeProvider wrapping your entire app.
+6. Copy [assets/fonts/](assets/fonts/) to your project.
+
+7. Update your root layout with [app/\_layout.tsx](app/_layout.tsx) contents. Feel free to add/change "Root Layout" block, but keep ThemeProvider wrapping your entire app.
 
 ## TODO-List
 
 Components:
 
-- Form:
-  - Context? It will always re-render parent! Inputs are rendered from parent, without it props won't change! (It's OK!)
-  - form.isValid()
-  - Keep components compatible for standalone use (value + onChange/onChangeText)
-  - Maybe create a Form component with just a pre-configured Flex to standardize gap.
-- Input
-- CheckBox
 - Dialog
+  -- Modal WIP.
+  -- Update modal with header -> convert it to fullscreen modal, migrate styles to with-header.
+  -- Create a new modal template -> default, style-it for centered position, create an input modal as example.
+  -- Input mudal can be another template. permit to add custom content to default modal.
+
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
 
 Create a screen with Fullscreen wrapper (e.g. login form). Check for keyboardawarescroll need.
@@ -35,8 +35,6 @@ Create a screen with Fullscreen wrapper (e.g. login form). Check for keyboardawa
 Persist colorScheme in theme provider.
 
 Add real links to main-menu.
-
-Adjust default-theme background and foreground colors (search for a good design as reference).
 
 Confirm if fontFamily is being applied for iOS.
 

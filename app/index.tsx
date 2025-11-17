@@ -8,17 +8,21 @@ import {
   Flex,
   Form,
   Icon,
+  Modal,
   ScreenWrapper,
   Text,
   TextInput,
   ToggleableContent,
   useForm,
+  useModal,
 } from "@/lib/ui";
 
 import t from "@/services/lang";
 import { z } from "zod";
 
 export default function _screen() {
+  const modal = useModal();
+
   const form = useForm({
     initialValues: {
       email: "",
@@ -40,6 +44,25 @@ export default function _screen() {
   return (
     <ScreenWrapper.Scrollable>
       <Stack.Screen options={{ headerShown: true, title: "Home" }} />
+
+      <Card>
+        <Card.Header title="Modals Card" />
+
+        <Button
+          title="Content Modal"
+          onPress={() => {
+            modal.showModal(
+              <Modal.WithHeader
+                title="Modal Title"
+                subtitle="this is a subtitle"
+                handleClose={modal.hideModal}
+              >
+                <Text>Modal Content</Text>
+              </Modal.WithHeader>
+            );
+          }}
+        />
+      </Card>
 
       <Card>
         <Card.Header title="Form Card" />
