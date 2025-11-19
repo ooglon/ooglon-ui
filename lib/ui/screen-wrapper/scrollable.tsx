@@ -2,6 +2,7 @@ import { PropsWithChildren, useCallback, useState } from "react";
 import { RefreshControl, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Flex } from "../flex";
 import { makeStyles } from "../theme";
 
@@ -17,6 +18,7 @@ export default function Scrollable({
   gap = "xl",
   onRefresh,
 }: ScrollableProps) {
+  const insets = useSafeAreaInsets();
   const styles = useStyles({ padding });
 
   const [refreshing, setRefreshing] = useState(false);
@@ -32,6 +34,7 @@ export default function Scrollable({
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
+        bottomOffset={insets.bottom}
         refreshControl={
           onRefresh ? (
             <RefreshControl

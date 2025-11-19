@@ -1,5 +1,6 @@
 export * from "./theme";
 
+export * from "./alert";
 export * from "./app-header";
 export * from "./avatar";
 export * from "./badge";

@@ -2,27 +2,27 @@ import { ReactNode } from "react";
 import { create } from "zustand";
 
 type Options = {
-  transparent?: boolean;
+  transparentBackdrop: boolean;
 };
 
 const defaultOptions: Options = {
-  transparent: false,
+  transparentBackdrop: false,
 };
 
 type State = {
   content: ReactNode;
-  options?: Options;
+  options: Options;
 };
 
 type Actions = {
-  showModal: (content: ReactNode, options?: Options) => void;
+  showModal: (content: ReactNode, options?: Partial<Options>) => void;
   hideModal: () => void;
 };
 
 export const useModal = create<State & Actions>()((set) => ({
   content: undefined,
   options: defaultOptions,
-  showModal: (content: ReactNode, options?: Options) =>
-    set({ content, options: options || defaultOptions }),
+  showModal: (content: ReactNode, options?: Partial<Options>) =>
+    set({ content, options: { ...defaultOptions, ...options } }),
   hideModal: () => set({ content: undefined }),
 }));

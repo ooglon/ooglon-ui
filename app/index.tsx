@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 
 import {
+  Alert,
   Badge,
   Button,
   Card,
@@ -48,19 +49,77 @@ export default function _screen() {
       <Card>
         <Card.Header title="Modals Card" />
 
+        <Text>Modals</Text>
+
         <Button
-          title="Content Modal"
+          title="FullScreen Modal"
           onPress={() => {
             modal.showModal(
-              <Modal.WithHeader
-                title="Modal Title"
-                subtitle="this is a subtitle"
-                handleClose={modal.hideModal}
-              >
-                <Text>Modal Content</Text>
-              </Modal.WithHeader>
+              <Modal.FullScreen>
+                <Modal.Header title="Fullscreen Modal Header" />
+
+                <Flex gap={0}>
+                  {Array.from({ length: 100 }).map((_, index) => (
+                    <Text key={index}>Modal Content {index}</Text>
+                  ))}
+                </Flex>
+
+                <TextInput label="Email" {...form.getInputProps("email")} />
+
+                <Text fontWeight="bold">END!</Text>
+
+                <Modal.Footer
+                  actions={[
+                    {
+                      title: t("OK"),
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                  ]}
+                />
+              </Modal.FullScreen>
             );
           }}
+        />
+
+        <Button
+          title="Windowed Modal"
+          onPress={() => {
+            modal.showModal(
+              <Modal.Windowed>
+                <Modal.Header title="Windowed Modal Header" />
+
+                <Text>Modal Content</Text>
+
+                <Modal.Footer
+                  actions={[
+                    {
+                      title: t("Cancel"),
+                      variant: "subtle",
+                      color: "gray",
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                    {
+                      title: t("Confirm"),
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                  ]}
+                />
+              </Modal.Windowed>
+            );
+          }}
+        />
+
+        <Text>Alerts</Text>
+
+        <Button
+          title="Alert.alert()"
+          onPress={() => Alert.alert("Alert Title", "Alert Message")}
         />
       </Card>
 

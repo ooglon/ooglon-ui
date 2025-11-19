@@ -13,7 +13,7 @@ import { makeStyles } from "../theme";
 import { defaultColors } from "../theme/default-colors";
 import { hexToRgba, sizeToFontSize } from "../theme/helpers";
 
-type ButtonProps = {
+export type ButtonProps = {
   title: string;
   variant?: "filled" | "light" | "outline" | "subtle";
   size?: "xs" | "sm" | "md" | "lg" | "xl";

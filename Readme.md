@@ -22,11 +22,19 @@ OOGLON UI Lib for React Native.
 
 Components:
 
-- Dialog
-  -- Modal WIP.
-  -- Update modal with header -> convert it to fullscreen modal, migrate styles to with-header.
-  -- Create a new modal template -> default, style-it for centered position, create an input modal as example.
-  -- Input mudal can be another template. permit to add custom content to default modal.
+Modal:
+
+- Add centered prop to windowed (default true). Otherwise render on top of screen;
+- Add wrappers for: Alert.alert(), const result: string|undefined = Alert.prompt(), const result: T | undefined = Alert.select<T>(list[], renderItem)
+  modal.show(<Modal.Select title="asd" onSelect={} onCancel={}> ...).
+
+Select:
+
+- use modal for Select, check tamagui for info;
+
+ScrollBar:
+
+- Check google apps;
 
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
 

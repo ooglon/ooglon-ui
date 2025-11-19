@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
 
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Flex } from "../flex";
 import { makeStyles } from "../theme";
 
@@ -16,17 +17,18 @@ export default function Fullscreen({
   padding = "xl",
   gap = "xl",
 }: FullscreenProps) {
+  const insets = useSafeAreaInsets();
   const styles = useStyles({ padding, center });
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "position" : "padding"}
+    <KeyboardAwareScrollView
+      bottomOffset={insets.bottom}
       style={styles.container}
     >
       <Flex gap={gap} style={styles.padding}>
         {children}
       </Flex>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 }
 
