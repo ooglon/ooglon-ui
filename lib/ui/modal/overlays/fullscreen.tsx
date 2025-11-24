@@ -24,6 +24,8 @@ export default function FullscreenOverlay({ children }: PropsWithChildren) {
   );
 }
 
+const V_OFFSET = 64;
+
 const useStyles = makeStyles(
   ({ theme, colorScheme }, props: { insets: EdgeInsets }) => ({
     container: {
@@ -32,7 +34,7 @@ const useStyles = makeStyles(
       padding: theme.spacing.md,
       paddingBottom: props.insets.bottom,
       width: "100%",
-      maxHeight: Dimensions.get("window").height - 64 - props.insets.top,
+      maxHeight: Dimensions.get("window").height - V_OFFSET - props.insets.top,
       backgroundColor: theme.backgroundColor[colorScheme],
       borderRadius: 0,
       borderTopLeftRadius: theme.radius[theme.defaultRadius],

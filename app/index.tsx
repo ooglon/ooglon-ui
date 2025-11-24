@@ -52,7 +52,7 @@ export default function _screen() {
         <Text>Modals</Text>
 
         <Button
-          title="FullScreen Modal"
+          title="FullScreen Modal (Big)"
           onPress={() => {
             modal.showModal(
               <Modal.FullScreen>
@@ -112,13 +112,89 @@ export default function _screen() {
         />
 
         <Button
-          title="Windowed Modal"
+          title="Windowed Modal (Big)"
           onPress={() => {
             modal.showModal(
               <Modal.Windowed>
-                <Modal.Header title="Windowed Modal Header" />
+                <Modal.Header title="Windowed Modal Big" />
 
-                <Text>Modal Content</Text>
+                <Flex gap={0}>
+                  {Array.from({ length: 100 }).map((_, index) => (
+                    <Text key={index}>Modal Content {index}</Text>
+                  ))}
+                </Flex>
+
+                <Modal.Footer
+                  actions={[
+                    {
+                      title: t("Cancel"),
+                      variant: "subtle",
+                      color: "gray",
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                    {
+                      title: t("Confirm"),
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                  ]}
+                />
+              </Modal.Windowed>
+            );
+          }}
+        />
+
+        <Button
+          title="Windowed Modal (Small)"
+          onPress={() => {
+            modal.showModal(
+              <Modal.Windowed>
+                <Modal.Header title="Windowed Modal (Small Content)" />
+
+                <Flex gap={0}>
+                  {Array.from({ length: 10 }).map((_, index) => (
+                    <Text key={index}>Modal Content {index}</Text>
+                  ))}
+                </Flex>
+
+                <Modal.Footer
+                  actions={[
+                    {
+                      title: t("Cancel"),
+                      variant: "subtle",
+                      color: "gray",
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                    {
+                      title: t("Confirm"),
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                  ]}
+                />
+              </Modal.Windowed>
+            );
+          }}
+        />
+
+        <Button
+          title="Windowed Modal (Centered)"
+          onPress={() => {
+            modal.showModal(
+              <Modal.Windowed centered>
+                <Modal.Header title="Windowed Modal (Centered)" />
+
+                <Flex gap={0}>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <Text key={index}>Modal Content {index}</Text>
+                  ))}
+                </Flex>
 
                 <Modal.Footer
                   actions={[
