@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { Pressable } from "react-native";
+import { Dimensions, Pressable } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -27,17 +27,17 @@ export default function FullscreenOverlay({ children }: PropsWithChildren) {
 const useStyles = makeStyles(
   ({ theme, colorScheme }, props: { insets: EdgeInsets }) => ({
     container: {
+      position: "absolute",
+      bottom: 0,
+      padding: theme.spacing.md,
+      paddingBottom: props.insets.bottom,
+      width: "100%",
+      maxHeight: Dimensions.get("window").height - 64 - props.insets.top,
       backgroundColor: theme.backgroundColor[colorScheme],
-      cursor: "auto",
       borderRadius: 0,
       borderTopLeftRadius: theme.radius[theme.defaultRadius],
       borderTopRightRadius: theme.radius[theme.defaultRadius],
-      width: "100%",
-      flex: 1,
-      margin: 0,
-      marginTop: 64 + props.insets.top,
-      padding: theme.spacing.md,
-      paddingBottom: props.insets.bottom,
+      cursor: "auto",
     },
   })
 );

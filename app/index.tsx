@@ -84,6 +84,34 @@ export default function _screen() {
         />
 
         <Button
+          title="FullScreen Modal (Small)"
+          onPress={() => {
+            modal.showModal(
+              <Modal.FullScreen>
+                <Modal.Header title="Fullscreen Modal Small" />
+
+                <Flex gap={0}>
+                  {Array.from({ length: 10 }).map((_, index) => (
+                    <Text key={index}>Modal Content {index}</Text>
+                  ))}
+                </Flex>
+
+                <Modal.Footer
+                  actions={[
+                    {
+                      title: t("OK"),
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                  ]}
+                />
+              </Modal.FullScreen>
+            );
+          }}
+        />
+
+        <Button
           title="Windowed Modal"
           onPress={() => {
             modal.showModal(
