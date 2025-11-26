@@ -1,11 +1,11 @@
 import { Stack } from "expo-router";
 
 import {
-  Alert,
   Badge,
   Button,
   Card,
   Checkbox,
+  Dialog,
   Flex,
   Form,
   Icon,
@@ -219,11 +219,114 @@ export default function _screen() {
           }}
         />
 
-        <Text>Alerts</Text>
+        <Button
+          title="Modal with onDismiss"
+          onPress={() => {
+            modal.showModal(
+              <Modal.Windowed>
+                <Modal.Header title="Modal with onDismiss" />
+
+                <Text>Check console after closing!</Text>
+
+                <Modal.Footer
+                  actions={[
+                    {
+                      title: t("OK"),
+                      onPress: () => {
+                        console.log("Modal Closed Automatically!");
+                      },
+                    },
+                  ]}
+                />
+              </Modal.Windowed>,
+              {
+                onDismiss: () => {
+                  console.log("Modal Closed, this is onDismiss!");
+                },
+              }
+            );
+          }}
+        />
 
         <Button
-          title="Alert.alert()"
-          onPress={() => Alert.alert("Alert Title", "Alert Message")}
+          title="Non Closable Modal"
+          onPress={() => {
+            modal.showModal(
+              <Modal.Windowed>
+                <Modal.Header title="Non Closable Modal" />
+
+                <Text>You need to accept!</Text>
+
+                <Modal.Footer
+                  actions={[
+                    {
+                      title: t("Cancel"),
+                      variant: "subtle",
+                      color: "gray",
+                      disabled: true,
+                    },
+                    {
+                      title: t("Accept"),
+                      onPress: () => {
+                        modal.hideModal();
+                        console.log("Modal closed Manually!");
+                      },
+                    },
+                  ]}
+                />
+              </Modal.Windowed>,
+              {
+                closeable: false,
+              }
+            );
+          }}
+        />
+
+        <Text>Dialogs</Text>
+
+        <Button
+          title="Dialog.alert()"
+          onPress={() => Dialog.alert("Alert Title", "Alert Message")}
+        />
+
+        <Button
+          title="Dialog.alert() with Options"
+          onPress={() =>
+            Dialog.alert("Danger!", "Alert danger Message", {
+              actionColor: "red",
+              onDismiss: () => {
+                console.log("Dialog onDismiss!");
+              },
+            })
+          }
+        />
+
+        <Button
+          title="Dialog.prompt()"
+          onPress={() =>
+            Dialog.prompt("Prompt Title", "Prompt Message:", (value) => {
+              console.log("Inserted value: ", value);
+            })
+          }
+        />
+
+        <Button
+          title="Dialog.prompt() with Options"
+          onPress={() =>
+            Dialog.prompt(
+              "Prompt Title",
+              "This prompt is not cancellable and triggers onDismiss",
+              (value) => {
+                console.log("Inserted value: ", value);
+              },
+              {
+                cancelable: false,
+                onDismiss: () => {
+                  console.log("Dialog onDismiss!");
+                },
+              }
+            )
+          }
         />
       </Card>
 

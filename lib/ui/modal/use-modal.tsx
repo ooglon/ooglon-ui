@@ -3,10 +3,13 @@ import { create } from "zustand";
 
 type Options = {
   transparentBackdrop: boolean;
+  closeable: boolean;
+  onDismiss?: () => void;
 };
 
 const defaultOptions: Options = {
   transparentBackdrop: false,
+  closeable: true,
 };
 
 type State = {
@@ -19,10 +22,13 @@ type Actions = {
   hideModal: () => void;
 };
 
-export const useModal = create<State & Actions>()((set) => ({
+export const useModal = create<State & Actions>()((set, get) => ({
   content: undefined,
   options: defaultOptions,
   showModal: (content: ReactNode, options?: Partial<Options>) =>
     set({ content, options: { ...defaultOptions, ...options } }),
-  hideModal: () => set({ content: undefined }),
+  hideModal: () => {
+    get().options.onDismiss?.();
+    return set({ content: undefined });
+  },
 }));

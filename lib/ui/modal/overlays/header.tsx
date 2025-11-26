@@ -15,8 +15,8 @@ export default function OverlayHeader({
   title,
   withCloseButton = true,
 }: OverlayHeaderProps) {
-  const styles = useStyles();
   const modal = useModal();
+  const styles = useStyles({ closeable: modal.options.closeable });
 
   return (
     <Flex direction="row" gap="xs" align="center" justify="space-between">
@@ -25,7 +25,10 @@ export default function OverlayHeader({
       </Text>
 
       {withCloseButton && (
-        <TouchableOpacity onPress={modal.hideModal}>
+        <TouchableOpacity
+          onPress={modal.hideModal}
+          disabled={!modal.options.closeable}
+        >
           <Icon
             type="material"
             name="close"
@@ -38,8 +41,14 @@ export default function OverlayHeader({
   );
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
-  icon: {
-    color: theme.foregroundColor[colorScheme],
-  },
-}));
+const useStyles = makeStyles(
+  ({ theme, colorScheme }, props: { closeable: boolean }) => ({
+    icon: {
+      color: props.closeable
+        ? theme.foregroundColor[colorScheme]
+        : colorScheme === "dark"
+        ? "#555"
+        : "#ccc",
+    },
+  })
+);

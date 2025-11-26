@@ -22,15 +22,13 @@ OOGLON UI Lib for React Native.
 
 Components:
 
-Modal:
+- Calendar
 
-- Add centered prop to windowed (default true). Otherwise render on top of screen;
-- Add wrappers for: Alert.alert(), const result: string|undefined = Alert.prompt(), const result: T | undefined = Alert.select<T>(list[], renderItem)
-  modal.show(<Modal.Select title="asd" onSelect={} onCancel={}> ...).
+Dialogs:
 
-Select:
-
-- use modal for Select, check tamagui for info;
+- Select (check tamagui)
+- Datepicker
+- ImagePicker
 
 ScrollBar:
 

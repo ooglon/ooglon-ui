@@ -1,11 +1,11 @@
 export * from "./theme";
 
-export * from "./alert";
 export * from "./app-header";
 export * from "./avatar";
 export * from "./badge";
 export * from "./button";
 export * from "./card";
+export * from "./dialog";
 export * from "./flex";
 export * from "./form";
 export * from "./icon";

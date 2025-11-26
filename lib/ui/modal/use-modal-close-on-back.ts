@@ -12,7 +12,9 @@ export default function useModalCloseOnBack() {
   const isModalVisible = modal.content !== undefined;
 
   const handleBackPress = () => {
-    modal.hideModal();
+    if (modal.options.closeable) {
+      modal.hideModal();
+    }
 
     return true;
   };

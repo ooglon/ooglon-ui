@@ -15,8 +15,17 @@ export function Modal() {
 
   if (!content) return null;
 
+  const handleBackdropPress = () => {
+    if (options.closeable) {
+      hideModal();
+    }
+  };
+
   return (
-    <Backdrop onPress={hideModal} transparent={options.transparentBackdrop}>
+    <Backdrop
+      onPress={handleBackdropPress}
+      transparent={options.transparentBackdrop}
+    >
       {content}
     </Backdrop>
   );

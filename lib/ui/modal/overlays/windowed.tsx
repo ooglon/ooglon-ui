@@ -7,10 +7,12 @@ import { makeStyles } from "../../theme";
 
 type WindowedOverlayProps = {
   centered?: boolean;
+  keyboardAware?: boolean;
 } & PropsWithChildren;
 
 export default function WindowedOverlay({
   centered = false,
+  keyboardAware = true,
   children,
 }: WindowedOverlayProps) {
   const styles = useStyles({ centered });
@@ -22,9 +24,13 @@ export default function WindowedOverlay({
         e.stopPropagation();
       }}
     >
-      <KeyboardAwareScrollView>
+      {keyboardAware ? (
+        <KeyboardAwareScrollView>
+          <Flex gap="md">{children}</Flex>
+        </KeyboardAwareScrollView>
+      ) : (
         <Flex gap="md">{children}</Flex>
-      </KeyboardAwareScrollView>
+      )}
     </Pressable>
   );
 }

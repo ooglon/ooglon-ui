@@ -17,7 +17,9 @@ export default function OverlayFooter({
   const modal = useModal();
 
   const handlePress = (actionIndex: number, event: GestureResponderEvent) => {
-    modal.hideModal();
+    if (modal.options.closeable) {
+      modal.hideModal();
+    }
     actions[actionIndex].onPress?.(event);
   };
 
