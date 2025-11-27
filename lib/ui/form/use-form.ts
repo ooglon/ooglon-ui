@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import z from "zod";
 
 type UseFormProps = {
@@ -14,6 +14,23 @@ export function useForm({
 }: UseFormProps) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<Record<string, string[]>>({});
+
+  useEffect(() => {
+    let initialValidatedFields: Record<string, string[]> = {};
+
+    // pre-validate initialValues (avoids a correct initial form to be detected as isNotFullyValidated)
+    for (const [key, value] of Object.entries(initialValues)) {
+      if (validations[key]) {
+        const result = validations[key].safeParse(value);
+
+        if (result.success) {
+          initialValidatedFields[key] = [];
+        }
+      }
+    }
+
+    setErrors((prev) => ({ ...prev, ...initialValidatedFields }));
+  }, []);
 
   const setFieldValue = (key: string, value: any) => {
     if (validations[key]) {
@@ -70,6 +87,7 @@ export function useForm({
   };
 
   const isNotFullyValidated =
+    // Object.keys(errors).length !== Object.keys(validations).length;
     Object.keys(errors).length !== Object.keys(validations).length;
 
   const someFieldHasError = Object.values(errors).some(
