@@ -20,6 +20,10 @@ OOGLON UI Lib for React Native.
 
 ## TODO-List
 
+Theme:
+
+- Refactor theme object to avoid colorScheme check on makeStyles.
+
 Components:
 
 - Calendar

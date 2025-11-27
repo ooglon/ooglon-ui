@@ -13,7 +13,7 @@ import MainMenu from "@/menus/main-menu";
 // ----------------------------------------------------------- Root Layout:
 
 const customFonts = {
-  RobotoRegular: require("../assets/fonts/Roboto-Regular.ttf"),
+  Roboto: require("../assets/fonts/Roboto-Regular.ttf"),
 };
 
 function RootLayout() {
