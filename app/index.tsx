@@ -27,7 +27,7 @@ export default function _screen() {
 
   const form = useForm({
     initialValues: {
-      email: "",
+      email: "disabled@email.com",
       password: "",
       remember: false,
       domain: null,
@@ -386,7 +386,11 @@ export default function _screen() {
         <Card.Header title="Form Card" />
 
         <Form>
-          <TextInput label="Email" {...form.getInputProps("email")} />
+          <TextInput
+            label="Email"
+            {...form.getInputProps("email")}
+            // disabled
+          />
 
           <TextInput
             label="Password"
@@ -406,7 +410,7 @@ export default function _screen() {
             {...form.getSelectProps("domain")}
             defaultSelectedIndex={1}
             allowDeselect
-            disabled
+            // disabled
           />
 
           <Button

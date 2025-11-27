@@ -11,6 +11,7 @@ import { Flex } from "../flex";
 import { Text } from "../text";
 import { makeStyles } from "../theme";
 import { defaultColors } from "../theme/default-colors";
+import { useDisabledStyles } from "../theme/default-styles";
 import { hexToRgba, sizeToFontSize } from "../theme/helpers";
 
 export type ButtonProps = {
@@ -42,13 +43,14 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const styles = useStyles({ variant, size, color, fullWidth });
+  const disabledStyles = useDisabledStyles();
 
   return (
     <TouchableOpacity
       style={[
         styles.container,
         styles[variant],
-        disabled && styles.disabled,
+        disabled && disabledStyles.button,
         containerStyle,
       ]}
       disabled={disabled}
@@ -61,7 +63,7 @@ export function Button({
           style={[
             styles.text,
             styles[`${variant}Text`],
-            disabled && styles.disabledText,
+            disabled && disabledStyles.text,
             textStyle,
           ]}
         >
@@ -85,14 +87,6 @@ const useStyles = makeStyles(
     text: {
       fontWeight: "bold",
       fontSize: sizeToFontSize(theme, props.size ?? "md"),
-    },
-    disabled: {
-      opacity: 0.5,
-      backgroundColor: colorScheme === "dark" ? "#555" : "#ccc",
-    },
-    disabledText: {
-      opacity: 0.5,
-      color: colorScheme === "dark" ? "#fff" : "#333",
     },
     // variants
     filled: {

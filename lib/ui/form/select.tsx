@@ -8,6 +8,7 @@ import { Flex } from "../flex";
 import { Icon } from "../icon";
 import { Text } from "../text";
 import { makeStyles } from "../theme";
+import { useDisabledStyles } from "../theme/default-styles";
 import FieldErrors from "./field-errors";
 
 type SelectProps<T> = {
@@ -38,6 +39,7 @@ export function Select<T>({
   style,
 }: SelectProps<T>) {
   const styles = useStyles();
+  const disabledStyles = useDisabledStyles();
 
   useEffect(() => {
     if (allowDeselect && defaultSelectedIndex === undefined) {
@@ -84,15 +86,25 @@ export function Select<T>({
       >
         <Flex direction="row" justify="space-between" gap="xs">
           {isArrayOfStrings(data) ? (
-            <Text>{selected as string}</Text>
+            <Text style={[disabled && disabledStyles.text]}>
+              {selected as string}
+            </Text>
           ) : (
             data.renderItem(selected as T, 0)
           )}
 
           <Flex direction="row" gap="xs" align="center">
             {allowDeselect && selected && (
-              <TouchableOpacity onPress={() => onChange(null)}>
-                <Icon type="material" name="close" size={16} />
+              <TouchableOpacity
+                onPress={() => onChange(null)}
+                disabled={disabled}
+              >
+                <Icon
+                  type="material"
+                  name="close"
+                  size={16}
+                  style={[disabled && disabledStyles.text]}
+                />
               </TouchableOpacity>
             )}
 
@@ -101,13 +113,13 @@ export function Select<T>({
                 type="material"
                 name="keyboard-arrow-up"
                 size={14}
-                style={{ marginBottom: -4 }}
+                style={[{ marginBottom: -4 }, disabled && disabledStyles.text]}
               />
               <Icon
                 type="material"
                 name="keyboard-arrow-down"
                 size={14}
-                style={{ marginTop: -4 }}
+                style={[{ marginTop: -4 }, disabled && disabledStyles.text]}
               />
             </Flex>
           </Flex>

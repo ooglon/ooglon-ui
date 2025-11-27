@@ -6,21 +6,33 @@ import {
 import { Flex } from "../flex";
 import { Text } from "../text";
 import { makeStyles } from "../theme";
+import { useDisabledStyles } from "../theme/default-styles";
 import FieldErrors from "./field-errors";
 
 type TextInputProps = {
   label?: string;
   errors?: string[];
+  disabled?: boolean;
 } & RNTextInputProps;
 
-export function TextInput({ label, errors, ...rest }: TextInputProps) {
+export function TextInput({
+  label,
+  errors,
+  disabled = false,
+  ...rest
+}: TextInputProps) {
   const styles = useStyles();
+  const disabledStyles = useDisabledStyles();
 
   return (
     <Flex direction="column" gap="xs">
       {label && <Text>{label}</Text>}
 
-      <RNTextInput style={styles.input} {...rest} />
+      <RNTextInput
+        style={[styles.input, disabled && disabledStyles.text]}
+        editable={!disabled}
+        {...rest}
+      />
 
       <FieldErrors errors={errors} />
     </Flex>
