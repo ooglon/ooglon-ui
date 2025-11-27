@@ -315,7 +315,7 @@ export default function _screen() {
           onPress={() =>
             Dialog.prompt(
               "Prompt Title",
-              "This prompt is not cancellable and triggers onDismiss",
+              "This prompt is not cancelable and triggers onDismiss",
               (value) => {
                 console.log("Inserted value: ", value);
               },
@@ -323,6 +323,56 @@ export default function _screen() {
                 cancelable: false,
                 onDismiss: () => {
                   console.log("Dialog onDismiss!");
+                },
+              }
+            )
+          }
+        />
+
+        <Button
+          title="Dialog.select() string[]"
+          onPress={() =>
+            Dialog.select(
+              "Select an Option (or Dismiss)",
+              ["TypeScript", "JavaScript", "PHP"],
+              (value) => {
+                console.log("Selected:", value);
+              },
+              {
+                onDismiss: () => {
+                  console.log("Optional Select onDismiss!");
+                },
+              }
+            )
+          }
+        />
+
+        <Button
+          title="Dialog.select() Car[] non cancelable"
+          onPress={() =>
+            Dialog.select(
+              "Select an Option (Cannot Dismiss)",
+              {
+                values: Array.from({ length: 50 }).map((_, index) => ({
+                  model: `Car ${index}`,
+                  brand: `Brand ${index}`,
+                  hp: 100 + Math.random() * 100,
+                })),
+                renderItem: (item, index) => (
+                  <Flex key={index} gap="xs" style={{ marginTop: 16 }}>
+                    <Text>{item.model}</Text>
+                    <Text>{item.brand}</Text>
+                    <Text>{item.hp}</Text>
+                  </Flex>
+                ),
+              },
+              (value) => {
+                console.log("Selected Car:", JSON.stringify(value, null, 2));
+              },
+              {
+                cancelable: false,
+                onDismiss: () => {
+                  console.log("Optional Select onDismiss!");
                 },
               }
             )

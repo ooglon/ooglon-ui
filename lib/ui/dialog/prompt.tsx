@@ -8,8 +8,8 @@ import { Text } from "../text";
 
 type PromptOptions = {
   actionLabel?: string;
-  cancelable?: boolean;
   cancelLabel?: string;
+  cancelable?: boolean;
   onDismiss?: () => void;
 };
 

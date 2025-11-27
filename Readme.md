@@ -26,7 +26,6 @@ Components:
 
 Dialogs:
 
-- Select (check tamagui)
 - Datepicker
 - ImagePicker
 
