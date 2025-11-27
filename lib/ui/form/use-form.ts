@@ -57,6 +57,18 @@ export function useForm({
     };
   };
 
+  const getSelectProps = (name: string) => {
+    if (!(name in initialValues)) {
+      throw new Error(`Field "${name}" not found in initialValues`);
+    }
+
+    return {
+      selected: values[name],
+      onChange: (value: any) => setFieldValue(name, value),
+      errors: errors[name],
+    };
+  };
+
   const isNotFullyValidated =
     Object.keys(errors).length !== Object.keys(validations).length;
 
@@ -67,6 +79,7 @@ export function useForm({
   return {
     getInputProps,
     getBooleanInputProps,
+    getSelectProps,
     hasErrors: isNotFullyValidated || someFieldHasError,
     submit: () => onSubmit(values),
     reset: () => {

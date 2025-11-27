@@ -11,6 +11,7 @@ import {
   Icon,
   Modal,
   ScreenWrapper,
+  Select,
   Text,
   TextInput,
   ToggleableContent,
@@ -29,6 +30,7 @@ export default function _screen() {
       email: "",
       password: "",
       remember: false,
+      domain: null,
     },
     validations: {
       email: z.email(t("Email inválido!")),
@@ -396,6 +398,15 @@ export default function _screen() {
             label="Remember me"
             {...form.getBooleanInputProps("remember")}
             // disabled
+          />
+
+          <Select
+            data={["abc.com", "xyz.com", "asd.org"]}
+            label="Domain"
+            {...form.getSelectProps("domain")}
+            defaultSelectedIndex={1}
+            allowDeselect
+            disabled
           />
 
           <Button

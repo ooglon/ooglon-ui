@@ -37,8 +37,4 @@ const useStyles = makeStyles(({ theme, colorScheme }) => ({
     color:
       colorScheme === "light" ? theme.colors.gray[8] : theme.colors.gray[2],
   },
-  error: {
-    color: theme.colors.red[theme.primaryShades[colorScheme].foreground],
-    fontSize: theme.fontSize - 2,
-  },
 }));
