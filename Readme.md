@@ -24,6 +24,34 @@ Theme:
 
 - Refactor theme object to avoid colorScheme check on makeStyles.
 
+colors.primary.asBackground()
+colors.red() //default shades
+colors.red().shaded(6,2)
+colors.red.asBackground() colors.red.asForeground()
+
+colors.forScheme("white", ["dark", 4])
+colors.forScheme(["lime", 2], ["dark", 3])
+colors.forScheme("#AA22DD", "rgb(123,123,200)")
+
+colors.bg.default()
+colors.bg.primary()
+colors.bg.red()
+colors.fg.red() //default shades
+colors.fg.red(6,2)
+
+color("red").foreground //default fg shade
+color("red").background //default bg shade
+color("red").shade(6,2) // lightShade 6, darkShade 2
+
+theme.spacing("md")
+theme.radius(), theme.radius("xs")
+
+theme na raiz de makeStyles!
+
+rename fontSize to defaultFontSize on base theme
+
+revise default-theme format, implement optional override (avoid nested fields?)
+
 Components:
 
 - Calendar
@@ -38,6 +66,8 @@ ScrollBar:
 - Check google apps;
 
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
+
+isArrayOfStrings is duplicated.
 
 Create a screen with Fullscreen wrapper (e.g. login form). Check for keyboardawarescroll need.
 

@@ -56,9 +56,8 @@ export function ToggleableContent({
   );
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles(({ themeb }) => ({
   header: {
-    color:
-      colorScheme === "light" ? theme.colors.gray[6] : theme.colors.gray[5],
+    color: themeb.colors.get("gray").shade(6, 5),
   },
 }));

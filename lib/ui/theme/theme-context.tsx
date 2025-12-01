@@ -1,10 +1,12 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
+import { buildTheme } from "./build-theme";
 import { defaultTheme } from "./default-theme";
 import { Theme } from "./theme";
 
 interface ThemeContextProps {
   theme: Theme;
+  themeb: ReturnType<typeof buildTheme>;
   colorScheme: "light" | "dark";
   toggleColorScheme: () => void;
 }
@@ -30,10 +32,16 @@ export function ThemeProvider({
     setColorScheme((val) => (val === "light" ? "dark" : "light"));
   };
 
+  const themeb = useMemo(
+    () => buildTheme(theme, colorScheme),
+    [theme, colorScheme]
+  );
+
   return (
     <ThemeContext.Provider
       value={{
         theme,
+        themeb,
         colorScheme,
         toggleColorScheme,
       }}

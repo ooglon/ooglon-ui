@@ -1,11 +1,13 @@
 import { useMemo } from "react";
 import { StyleSheet } from "react-native";
 
+import { buildTheme } from "./build-theme";
 import { Theme } from "./theme";
 import { useTheme } from "./theme-context";
 
 interface UseThemeProps {
   theme: Theme;
+  themeb: ReturnType<typeof buildTheme>;
   colorScheme: "light" | "dark";
 }
 

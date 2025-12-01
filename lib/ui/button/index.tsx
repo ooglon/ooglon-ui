@@ -12,7 +12,7 @@ import { Text } from "../text";
 import { makeStyles } from "../theme";
 import { defaultColors } from "../theme/default-colors";
 import { useDisabledStyles } from "../theme/default-styles";
-import { hexToRgba, sizeToFontSize } from "../theme/helpers";
+import { hexToRgba } from "../theme/helpers";
 
 export type ButtonProps = {
   title: string;
@@ -77,62 +77,45 @@ export function Button({
 }
 
 const useStyles = makeStyles(
-  ({ theme, colorScheme }, props: Omit<ButtonProps, "title">) => ({
+  ({ themeb }, props: Omit<ButtonProps, "title">) => ({
     // base
     container: {
-      padding: theme.spacing[props.size ?? "md"],
-      borderRadius: theme.radius[theme.defaultRadius],
+      padding: themeb.spacing(props.size),
+      borderRadius: themeb.radius(),
       flexGrow: props.fullWidth ? 1 : undefined,
     },
     text: {
       fontWeight: "bold",
-      fontSize: sizeToFontSize(theme, props.size ?? "md"),
+      fontSize: themeb.fontSize(props.size),
     },
     // variants
     filled: {
-      backgroundColor:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].background
-        ],
+      backgroundColor: themeb.colors.get(props.color).background,
     },
     filledText: {
       color: "#fff",
     },
     light: {
       backgroundColor: hexToRgba(
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].background
-        ],
-        colorScheme === "dark" ? 0.15 : 0.1
+        themeb.colors.get(props.color).background,
+        themeb.colorScheme === "dark" ? 0.15 : 0.1
       ),
     },
     lightText: {
-      color:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
+      color: themeb.colors.get(props.color).foreground,
     },
     outline: {
       borderWidth: 1,
-      borderColor:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
+      borderColor: themeb.colors.get(props.color).foreground,
     },
     outlineText: {
-      color:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
+      color: themeb.colors.get(props.color).foreground,
     },
     subtle: {
       backgroundColor: "transparent",
     },
     subtleText: {
-      color:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
+      color: themeb.colors.get(props.color).foreground,
     },
   })
 );

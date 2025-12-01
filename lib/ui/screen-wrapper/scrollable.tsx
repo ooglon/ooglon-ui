@@ -54,18 +54,18 @@ export default function Scrollable({
 
 const useStyles = makeStyles(
   (
-    { theme, colorScheme },
+    { themeb },
     props: {
       padding: "xs" | "sm" | "md" | "lg" | "xl" | "none";
     }
   ) => ({
     container: {
       flex: 1,
-      backgroundColor: theme.backgroundColor[colorScheme],
+      backgroundColor: themeb.colors.background,
     },
     padding: {
       padding:
-        props.padding !== "none" ? theme.spacing[props.padding] : undefined,
+        props.padding !== "none" ? themeb.spacing(props.padding) : undefined,
     },
   })
 );

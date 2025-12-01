@@ -61,7 +61,7 @@ export function Checkbox({
   );
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles(({ themeb }) => ({
   iconContainer: {
     position: "relative",
   },
@@ -71,19 +71,18 @@ const useStyles = makeStyles(({ theme, colorScheme }) => ({
     height: 16,
     top: 4,
     left: 4,
-    backgroundColor: theme.backgroundColor["light"],
+    backgroundColor: themeb.backgroundColor.light,
   },
   iconChecked: {
-    color:
-      theme.colors[theme.primaryColor][
-        theme.primaryShades[colorScheme].background
-      ],
+    color: themeb.colors.get("primary").background,
   },
   iconUnchecked: {
-    color:
-      colorScheme === "light" ? theme.colors.gray[4] : theme.colors.gray[6],
+    color: themeb.colors.select(
+      themeb.colors.raw.gray[4],
+      themeb.colors.raw.gray[6]
+    ),
   },
   label: {
-    color: theme.foregroundColor[colorScheme],
+    color: themeb.colors.foreground,
   },
 }));

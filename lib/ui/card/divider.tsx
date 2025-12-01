@@ -7,10 +7,9 @@ export default function CardDivider() {
   return <View style={styles.divider} />;
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles(({ themeb }) => ({
   divider: {
-    backgroundColor:
-      colorScheme === "light" ? theme.colors.gray[6] : theme.colors.gray[5],
+    backgroundColor: themeb.colors.get("gray").shade(6, 5),
     height: 0.5,
   },
 }));

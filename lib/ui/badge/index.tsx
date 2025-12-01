@@ -3,7 +3,6 @@ import { TextStyle, View, ViewStyle } from "react-native";
 import { Text } from "../text";
 import { makeStyles } from "../theme";
 import { defaultColors } from "../theme/default-colors";
-import { sizeToFontSize } from "../theme/helpers";
 
 type BadgeProps = {
   children: React.ReactNode;
@@ -58,21 +57,18 @@ const paddings = {
 };
 
 const useStyles = makeStyles(
-  ({ theme, colorScheme }, props: Omit<BadgeProps, "children">) => ({
+  ({ themeb }, props: Omit<BadgeProps, "children">) => ({
     container: {
       paddingVertical: paddings[props.size ?? "xs"].v,
       paddingHorizontal: paddings[props.size ?? "xs"].h,
-      borderRadius: theme.radius[theme.defaultRadius] * 2,
-      backgroundColor:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].background
-        ],
+      borderRadius: themeb.radius() * 2,
+      backgroundColor: themeb.colors.get(props.color).background,
       justifyContent: "center",
       alignItems: "center",
     },
     text: {
       fontWeight: "bold",
-      fontSize: sizeToFontSize(theme, props.size ?? "md"),
+      fontSize: themeb.fontSize(props.size),
       color: "#fff",
     },
   })
