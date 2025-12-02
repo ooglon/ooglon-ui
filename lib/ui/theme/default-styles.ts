@@ -29,13 +29,13 @@ export const useShadowStyle = makeStyles(
   })
 );
 
-export const useDisabledStyles = makeStyles(({ theme, colorScheme }) => ({
+export const useDisabledStyles = makeStyles((theme) => ({
   text: {
     opacity: 0.5,
-    color: colorScheme === "dark" ? "#fff" : "#333",
+    color: theme.colors.select("#333", "#fff"),
   },
   button: {
     opacity: 0.5,
-    backgroundColor: colorScheme === "dark" ? "#555" : "#ccc",
+    backgroundColor: theme.colors.select("#ccc", "#555"),
   },
 }));

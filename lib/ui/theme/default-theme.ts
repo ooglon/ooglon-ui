@@ -1,9 +1,9 @@
 // Inspired in mantine default theme: https://github.com/mantinedev/mantine/blob/bf25bdb3089cdfdaabe60c2d65142fbf85d77b3b/packages/%40mantine/core/src/core/MantineProvider/default-theme.ts
 
+import { BaseTheme } from "./base-theme";
 import { defaultColors as colors } from "./default-colors";
-import { Theme } from "./theme";
 
-export const defaultTheme: Theme = {
+export const defaultTheme: BaseTheme = {
   // colors
   colors: colors,
   backgroundColor: {
@@ -25,9 +25,12 @@ export const defaultTheme: Theme = {
       foreground: 2,
     },
   },
+
   // typography
   fontFamily: "Roboto",
-  fontSize: 15, // React Native default
+  baseFontSize: 15, // React Native default
+  defaultFontSize: "md", // baseFontSize
+
   // borders
   radius: {
     xs: 2,
@@ -37,6 +40,7 @@ export const defaultTheme: Theme = {
     xl: 32,
   },
   defaultRadius: "lg",
+
   // spacing
   spacing: {
     xs: 10,
@@ -45,4 +49,5 @@ export const defaultTheme: Theme = {
     lg: 20,
     xl: 32,
   },
+  defaultSpacing: "md",
 };

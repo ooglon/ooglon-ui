@@ -12,13 +12,13 @@ import { HEADER_HEIGHT } from "./constants";
 import HeaderMenu from "./menu";
 
 export function AppHeader(props: NativeStackHeaderProps) {
-  const { theme, colorScheme } = useTheme();
+  const { theme } = useTheme();
   const styles = useStyles();
   const { defaultShadow } = useShadowStyle();
 
   return (
     <View style={styles.container}>
-      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+      <StatusBar style={theme.colorScheme === "dark" ? "light" : "dark"} />
 
       <View style={[styles.inner, defaultShadow]}>
         {props.navigation.canGoBack() && props.options.headerBackVisible ? (
@@ -34,7 +34,7 @@ export function AppHeader(props: NativeStackHeaderProps) {
 
         <Text
           fontWeight="bold"
-          fontSize={theme.fontSize + 2}
+          fontSize={theme.fontSize("default") + 2}
           style={styles.title}
         >
           {props.options.title}
@@ -48,12 +48,12 @@ export function AppHeader(props: NativeStackHeaderProps) {
   );
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
-  container: { backgroundColor: theme.backgroundColor[colorScheme] },
+const useStyles = makeStyles((theme) => ({
+  container: { backgroundColor: theme.colors.background("auto") },
   inner: {
-    borderBottomLeftRadius: theme.radius[theme.defaultRadius],
-    borderBottomRightRadius: theme.radius[theme.defaultRadius],
-    backgroundColor: colorScheme === "light" ? "white" : theme.colors.dark[4],
+    borderBottomLeftRadius: theme.radius("default"),
+    borderBottomRightRadius: theme.radius("default"),
+    backgroundColor: theme.colors.select("white", theme.colors.get("dark", 4)),
     height: HEADER_HEIGHT,
     paddingTop: Constants.statusBarHeight,
     flexDirection: "row",

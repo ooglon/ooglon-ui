@@ -1,6 +1,8 @@
 // This pallete is inspired in mantine.ui.
 
-export const defaultColors = {
+import { Tuple } from "./theme-helpers";
+
+export const defaultColors: Record<string, Tuple<string, 10>> = {
   dark: [
     "#C1C2C5",
     "#A6A7AB",

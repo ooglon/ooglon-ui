@@ -15,9 +15,9 @@ export default function FieldErrors({ errors }: FieldErrorsProps) {
   ));
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles((theme) => ({
   error: {
-    color: theme.colors.red[theme.primaryShades[colorScheme].foreground],
-    fontSize: theme.fontSize - 2,
+    color: theme.colors.get("red"),
+    fontSize: theme.fontSize("default") - 2,
   },
 }));

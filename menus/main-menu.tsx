@@ -2,7 +2,7 @@ import { AppHeader, useTheme } from "@/lib/ui";
 import t from "@/services/lang";
 
 export default function MainMenu() {
-  const { colorScheme, toggleColorScheme } = useTheme();
+  const { theme, toggleColorScheme } = useTheme();
 
   // const auth = useAuth();
 
@@ -52,7 +52,7 @@ export default function MainMenu() {
 
       <AppHeader.Menu.Item
         icon={
-          colorScheme === "dark"
+          theme.colorScheme === "dark"
             ? { type: "material-community", name: "moon-waning-crescent" }
             : { type: "material", name: "sunny" }
         }

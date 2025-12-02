@@ -131,15 +131,13 @@ export function Select<T>({
   );
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles((theme) => ({
   input: {
     borderWidth: 1,
-    borderRadius: theme.radius[theme.defaultRadius],
-    borderColor:
-      colorScheme === "light" ? theme.colors.gray[4] : theme.colors.gray[6],
-    padding: theme.spacing.md,
-    color:
-      colorScheme === "light" ? theme.colors.gray[8] : theme.colors.gray[2],
+    borderRadius: theme.radius("default"),
+    borderColor: theme.colors.get("gray", [4, 6]),
+    padding: theme.spacing("md"),
+    color: theme.colors.get("gray", [8, 2]),
   },
 }));
 

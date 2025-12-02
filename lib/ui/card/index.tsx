@@ -17,11 +17,11 @@ export function Card({ gap = "xs", children }: CardProps) {
   );
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles((theme) => ({
   container: {
-    padding: theme.spacing.md,
-    borderRadius: theme.radius[theme.defaultRadius],
-    backgroundColor: colorScheme === "light" ? "white" : theme.colors.dark[4],
+    padding: theme.spacing("md"),
+    borderRadius: theme.radius("default"),
+    backgroundColor: theme.colors.select("white", theme.colors.get("dark", 4)),
   },
 }));
 

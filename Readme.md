@@ -22,7 +22,7 @@ OOGLON UI Lib for React Native.
 
 Theme:
 
-- Refactor theme object to avoid colorScheme check on makeStyles.
+revise default-theme format, implement optional override (avoid nested fields?)
 
 Components:
 
@@ -38,6 +38,8 @@ ScrollBar:
 - Check google apps;
 
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
+
+isArrayOfStrings is duplicated.
 
 Create a screen with Fullscreen wrapper (e.g. login form). Check for keyboardawarescroll need.
 

@@ -34,12 +34,12 @@ export function Text({
   h4,
   firstChild,
 }: TextProps) {
-  const { theme, colorScheme } = useTheme();
+  const { theme } = useTheme();
   const headingStyle = useHeadingStyle(h1, h2, h3, h4, firstChild);
 
   const defaultTextStyle: StyleProp<TextStyle> = {
-    color: color || theme.foregroundColor[colorScheme],
-    fontSize: fontSize || theme.fontSize,
+    color: color || theme.colors.foreground("auto"),
+    fontSize: fontSize || theme.fontSize("default"),
     fontWeight: fontWeight || "normal",
     fontStyle: fontStyle || "normal",
     textAlign: textAlign || "left",

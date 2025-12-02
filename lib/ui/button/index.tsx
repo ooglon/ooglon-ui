@@ -12,7 +12,7 @@ import { Text } from "../text";
 import { makeStyles } from "../theme";
 import { defaultColors } from "../theme/default-colors";
 import { useDisabledStyles } from "../theme/default-styles";
-import { hexToRgba, sizeToFontSize } from "../theme/helpers";
+import { hexToRgba } from "../theme/theme-helpers";
 
 export type ButtonProps = {
   title: string;
@@ -76,63 +76,44 @@ export function Button({
   );
 }
 
-const useStyles = makeStyles(
-  ({ theme, colorScheme }, props: Omit<ButtonProps, "title">) => ({
-    // base
-    container: {
-      padding: theme.spacing[props.size ?? "md"],
-      borderRadius: theme.radius[theme.defaultRadius],
-      flexGrow: props.fullWidth ? 1 : undefined,
-    },
-    text: {
-      fontWeight: "bold",
-      fontSize: sizeToFontSize(theme, props.size ?? "md"),
-    },
-    // variants
-    filled: {
-      backgroundColor:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].background
-        ],
-    },
-    filledText: {
-      color: "#fff",
-    },
-    light: {
-      backgroundColor: hexToRgba(
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].background
-        ],
-        colorScheme === "dark" ? 0.15 : 0.1
-      ),
-    },
-    lightText: {
-      color:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
-    },
-    outline: {
-      borderWidth: 1,
-      borderColor:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
-    },
-    outlineText: {
-      color:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
-    },
-    subtle: {
-      backgroundColor: "transparent",
-    },
-    subtleText: {
-      color:
-        theme.colors[props.color ?? theme.primaryColor][
-          theme.primaryShades[colorScheme].foreground
-        ],
-    },
-  })
-);
+const useStyles = makeStyles((theme, props: Omit<ButtonProps, "title">) => ({
+  // base
+  container: {
+    padding: theme.spacing(props.size ?? "default"),
+    borderRadius: theme.radius("default"),
+    flexGrow: props.fullWidth ? 1 : undefined,
+  },
+  text: {
+    fontWeight: "bold",
+    fontSize: theme.fontSize(props.size ?? "default"),
+  },
+  // variants
+  filled: {
+    backgroundColor: theme.colors.get(props.color ?? "primary", "background"),
+  },
+  filledText: {
+    color: "#fff",
+  },
+  light: {
+    backgroundColor: hexToRgba(
+      theme.colors.get(props.color ?? "primary", "background"),
+      theme.colorScheme === "dark" ? 0.15 : 0.1
+    ),
+  },
+  lightText: {
+    color: theme.colors.get(props.color ?? "primary"),
+  },
+  outline: {
+    borderWidth: 1,
+    borderColor: theme.colors.get(props.color ?? "primary"),
+  },
+  outlineText: {
+    color: theme.colors.get(props.color ?? "primary"),
+  },
+  subtle: {
+    backgroundColor: "transparent",
+  },
+  subtleText: {
+    color: theme.colors.get(props.color ?? "primary"),
+  },
+}));

@@ -41,14 +41,10 @@ export default function OverlayHeader({
   );
 }
 
-const useStyles = makeStyles(
-  ({ theme, colorScheme }, props: { closeable: boolean }) => ({
-    icon: {
-      color: props.closeable
-        ? theme.foregroundColor[colorScheme]
-        : colorScheme === "dark"
-        ? "#555"
-        : "#ccc",
-    },
-  })
-);
+const useStyles = makeStyles((theme, props: { closeable: boolean }) => ({
+  icon: {
+    color: props.closeable
+      ? theme.colors.foreground("auto")
+      : theme.colors.select("#ccc", "#555"),
+  },
+}));

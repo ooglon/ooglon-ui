@@ -1,4 +1,5 @@
 import { View } from "react-native";
+
 import { makeStyles } from "../../theme";
 
 export default function HeaderMenuDivider() {
@@ -7,9 +8,9 @@ export default function HeaderMenuDivider() {
   return <View style={styles.divider} />;
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles((theme) => ({
   divider: {
-    backgroundColor: theme.foregroundColor[colorScheme],
+    backgroundColor: theme.colors.foreground("auto"),
     height: 0.5,
   },
 }));

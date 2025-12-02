@@ -25,7 +25,7 @@ type IconProps = {
 } & IconType;
 
 export function Icon({ type, name, size = 24, color, style }: IconProps) {
-  const { theme, colorScheme } = useTheme();
+  const { theme } = useTheme();
 
   // @ts-ignore
   const IconComponent = IconMap[type];
@@ -34,7 +34,7 @@ export function Icon({ type, name, size = 24, color, style }: IconProps) {
     <IconComponent
       name={name as any}
       size={size}
-      color={color ? color : theme.foregroundColor[colorScheme]}
+      color={color ? color : theme.colors.foreground("auto")}
       style={style}
     />
   );

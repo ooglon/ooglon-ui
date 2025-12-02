@@ -1,8 +1,9 @@
 import { defaultColors } from "./default-colors";
+import { Tuple } from "./theme-helpers";
 
-export type Theme = {
+export type BaseTheme = {
   // colors
-  colors: Record<keyof typeof defaultColors, string[]>;
+  colors: Record<keyof typeof defaultColors, Tuple<string, 10>>;
   backgroundColor: {
     light: string;
     dark: string;
@@ -22,9 +23,12 @@ export type Theme = {
       foreground: number;
     };
   };
+
   // typography
   fontFamily: string;
-  fontSize: number;
+  baseFontSize: number;
+  defaultFontSize: "xs" | "sm" | "md" | "lg" | "xl";
+
   // borders
   radius: {
     xs: number;
@@ -34,6 +38,7 @@ export type Theme = {
     xl: number;
   };
   defaultRadius: "xs" | "sm" | "md" | "lg" | "xl";
+
   // spacing
   spacing: {
     xs: number;
@@ -42,4 +47,5 @@ export type Theme = {
     lg: number;
     xl: number;
   };
+  defaultSpacing: "xs" | "sm" | "md" | "lg" | "xl";
 };

@@ -25,11 +25,11 @@ export default function HeaderMenuItem({
   );
 }
 
-const useStyles = makeStyles(({ theme }) => ({
+const useStyles = makeStyles((theme) => ({
   item: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",
-    gap: theme.spacing.md,
+    gap: theme.spacing("md"),
   },
 }));

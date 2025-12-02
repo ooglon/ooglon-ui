@@ -31,8 +31,8 @@ export default function HeaderMenuUser({
   );
 }
 
-const useStyles = makeStyles(({ theme }) => ({
+const useStyles = makeStyles((theme) => ({
   container: {
-    maxWidth: Dimensions.get("window").width - theme.spacing.md * 6,
+    maxWidth: Dimensions.get("window").width - theme.spacing("md") * 6,
   },
 }));

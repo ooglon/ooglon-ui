@@ -50,7 +50,7 @@ export default function HeaderMenu({ children }: PropsWithChildren) {
           style={styles.backdropStyle}
         >
           <Pressable style={[styles.overlayStyle, defaultShadow]}>
-            <Flex gap={theme.spacing.md}>{children}</Flex>
+            <Flex gap={theme.spacing("md")}>{children}</Flex>
           </Pressable>
         </Pressable>
       )}
@@ -58,7 +58,7 @@ export default function HeaderMenu({ children }: PropsWithChildren) {
   );
 }
 
-const useStyles = makeStyles(({ theme, colorScheme }) => ({
+const useStyles = makeStyles((theme) => ({
   menuTouchable: {
     padding: 8,
   },
@@ -70,16 +70,18 @@ const useStyles = makeStyles(({ theme, colorScheme }) => ({
     height: Dimensions.get("window").height,
     justifyContent: "flex-start",
     alignItems: "flex-end",
-    backgroundColor:
-      colorScheme === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.25)",
+    backgroundColor: theme.colors.select(
+      "rgba(0, 0, 0, 0.1)",
+      "rgba(0, 0, 0, 0.25)"
+    ),
   },
   overlayStyle: {
-    borderRadius: theme.radius[theme.defaultRadius],
+    borderRadius: theme.radius("default"),
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
-    padding: theme.spacing.md,
+    padding: theme.spacing("md"),
     marginTop: HEADER_HEIGHT + 8,
-    backgroundColor: theme.backgroundColor[colorScheme],
+    backgroundColor: theme.colors.background("auto"),
   },
 }));
 

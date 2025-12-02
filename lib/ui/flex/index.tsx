@@ -31,9 +31,9 @@ export function Flex({
   const numericGap =
     gap !== undefined
       ? typeof gap === "string"
-        ? theme.spacing[gap]
+        ? theme.spacing(gap)
         : gap
-      : theme.spacing.xl;
+      : theme.spacing("xl");
 
   return (
     <View
