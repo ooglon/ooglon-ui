@@ -32,10 +32,10 @@ export const useShadowStyle = makeStyles(
 export const useDisabledStyles = makeStyles((theme) => ({
   text: {
     opacity: 0.5,
-    color: theme.colors.select("#333", "#fff"),
+    color: theme.colors.foreground("auto"),
   },
   button: {
     opacity: 0.5,
-    backgroundColor: theme.colors.select("#ccc", "#555"),
+    backgroundColor: theme.colors.background("auto"),
   },
 }));

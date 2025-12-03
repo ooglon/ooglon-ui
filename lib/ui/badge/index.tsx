@@ -2,11 +2,11 @@ import { TextStyle, View, ViewStyle } from "react-native";
 
 import { Text } from "../text";
 import { makeStyles } from "../theme";
-import { defaultColors } from "../theme/default-colors";
+import { Colors } from "../theme/theme.types";
 
 type BadgeProps = {
   children: React.ReactNode;
-  color?: keyof typeof defaultColors;
+  color?: keyof Colors;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   containerStyle?: ViewStyle;
   textStyle?: TextStyle;

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
   container: {
     position: "absolute",
     bottom: 0,
-    padding: theme.spacing("md"),
+    padding: theme.spacing("default"),
     paddingBottom: props.insets.bottom,
     width: "100%",
     maxHeight: Dimensions.get("window").height - V_OFFSET - props.insets.top,

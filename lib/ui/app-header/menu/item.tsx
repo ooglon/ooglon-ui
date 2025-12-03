@@ -30,6 +30,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",
-    gap: theme.spacing("md"),
+    gap: theme.spacing("default"),
   },
 }));

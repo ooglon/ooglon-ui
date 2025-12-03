@@ -1,6 +1,6 @@
-import { BaseTheme } from "./base-theme";
-import { defaultColors } from "./default-colors";
-import { sizeToFontSize } from "./theme-helpers";
+import { BASE_COLORS } from "./colors";
+import { sizeToFontSize } from "./helpers";
+import { BaseTheme } from "./theme.types";
 
 export const buildTheme = (
   baseTheme: BaseTheme,
@@ -14,23 +14,41 @@ export const buildTheme = (
       /**
        * Returns theme background for a given color scheme.
        * @param colorScheme "light" | "dark", "auto" refers to current/active color scheme.
+       * @param level increases background brightness by {level} shades.
        * @returns theme background color.
        */
-      background: (colorScheme: "light" | "dark" | "auto") => {
-        return baseTheme.backgroundColor[
-          colorScheme === "auto" ? activeColorScheme : colorScheme
-        ];
+      background: (colorScheme: "light" | "dark" | "auto", level?: 0 | 1) => {
+        const scheme = colorScheme === "auto" ? activeColorScheme : colorScheme;
+
+        const colorKey = baseTheme.backgroundColor[scheme];
+
+        if (!baseTheme.colors[colorKey]) {
+          throw new Error(`Color '${colorKey}' is not defined in theme!`);
+        }
+
+        const shade = scheme === "light" ? 1 - (level ?? 0) : 9 - (level ?? 0);
+
+        return baseTheme.colors[colorKey][shade];
       },
 
       /**
        * Returns theme foreground for a given color scheme.
        * @param colorScheme "light" | "dark", "auto" refers to current/active color scheme.
+       * @param level decreases foreground brightness by {level} shades.
        * @returns theme foreground color.
        */
-      foreground: (colorScheme: "light" | "dark" | "auto") => {
-        return baseTheme.foregroundColor[
-          colorScheme === "auto" ? activeColorScheme : colorScheme
-        ];
+      foreground: (colorScheme: "light" | "dark" | "auto", level?: 0 | 1) => {
+        const scheme = colorScheme === "auto" ? activeColorScheme : colorScheme;
+
+        const colorKey = baseTheme.foregroundColor[scheme];
+
+        if (!baseTheme.colors[colorKey]) {
+          throw new Error(`Color '${colorKey}' is not defined in theme!`);
+        }
+
+        const shade = scheme === "light" ? 9 - (level ?? 0) : 1 - (level ?? 0);
+
+        return baseTheme.colors[colorKey][shade]; //0 + (level ?? 0)
       },
 
       /**
@@ -44,7 +62,7 @@ export const buildTheme = (
        * @returns returns a color string from theme colors.
        */
       get: (
-        key: keyof typeof defaultColors | "primary",
+        key: keyof typeof BASE_COLORS | "primary",
         shade?:
           | number
           | "background"
@@ -67,6 +85,11 @@ export const buildTheme = (
           s = shade[activeColorScheme === "light" ? 0 : 1];
         }
 
+        if (!c)
+          throw new Error(
+            `Color '${k}' is not defined in theme!\n\n\tDouble check your custom theme definition and make sure it is set as a prop in your ThemeProvider.`
+          );
+
         return c[s];
       },
 
@@ -86,10 +109,16 @@ export const buildTheme = (
      * @param key standardized radius key.
      * @returns numeric radius.
      */
-    radius: (key: keyof BaseTheme["radius"] | "default") => {
-      return baseTheme.radius[
-        key === "default" ? baseTheme.defaultRadius : key
-      ];
+    radius: (key: keyof BaseTheme["radius"] | "default" | "none") => {
+      if (key === "none") {
+        return 0;
+      } else {
+        return baseTheme.radius[
+          key === "default"
+            ? (baseTheme.defaultRadius as keyof BaseTheme["radius"])
+            : key
+        ];
+      }
     },
 
     /**

@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   inner: {
     borderBottomLeftRadius: theme.radius("default"),
     borderBottomRightRadius: theme.radius("default"),
-    backgroundColor: theme.colors.select("white", theme.colors.get("dark", 4)),
+    backgroundColor: theme.colors.background("auto", 1),
     height: HEADER_HEIGHT,
     paddingTop: Constants.statusBarHeight,
     flexDirection: "row",

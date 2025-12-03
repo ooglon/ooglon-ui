@@ -20,10 +20,6 @@ OOGLON UI Lib for React Native.
 
 ## TODO-List
 
-Theme:
-
-revise default-theme format, implement optional override (avoid nested fields?)
-
 Components:
 
 - Calendar

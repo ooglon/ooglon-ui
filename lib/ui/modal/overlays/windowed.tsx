@@ -40,15 +40,15 @@ const V_OFFSET = 64;
 const useStyles = makeStyles((theme, props: { centered: boolean }) => ({
   container: {
     backgroundColor: theme.colors.background("auto"),
-    padding: theme.spacing("md"),
+    padding: theme.spacing("default"),
     cursor: "auto",
     borderRadius: theme.radius("default"),
     margin: 16,
     minWidth: Math.min(
-      Dimensions.get("window").width - theme.spacing("md") * 4,
+      Dimensions.get("window").width - theme.spacing("default") * 4,
       380
     ),
-    maxWidth: Dimensions.get("window").width - theme.spacing("md") * 4,
+    maxWidth: Dimensions.get("window").width - theme.spacing("default") * 4,
     maxHeight: Dimensions.get("window").height - V_OFFSET * 2,
     position: props.centered ? undefined : "absolute",
     top: props.centered ? undefined : V_OFFSET,

@@ -1,4 +1,4 @@
-import { BaseTheme } from "./base-theme";
+import { BaseTheme } from "./theme.types";
 
 /**
  *  Converts a hex color to rgba.
@@ -42,14 +42,3 @@ export const sizeToFontSize = (
       return theme.baseFontSize + 4;
   }
 };
-
-/**
- * Type to define a tuple type with N elements.
- * @param T Tuple element type (e.g: string)
- * @param N Tuple size.
- */
-export type Tuple<
-  T,
-  N extends number,
-  R extends T[] = []
-> = R["length"] extends N ? R : Tuple<T, N, [T, ...R]>;

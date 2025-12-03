@@ -19,9 +19,9 @@ export function Card({ gap = "xs", children }: CardProps) {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: theme.spacing("md"),
+    padding: theme.spacing("default"),
     borderRadius: theme.radius("default"),
-    backgroundColor: theme.colors.select("white", theme.colors.get("dark", 4)),
+    backgroundColor: theme.colors.background("auto", 1),
   },
 }));
 

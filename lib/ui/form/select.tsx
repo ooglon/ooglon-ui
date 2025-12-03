@@ -84,7 +84,7 @@ export function Select<T>({
         disabled={disabled}
         style={[styles.input, style]}
       >
-        <Flex direction="row" justify="space-between" gap="xs">
+        <Flex direction="row" justify="space-between" gap="xs" align="center">
           {isArrayOfStrings(data) ? (
             <Text style={[disabled && disabledStyles.text]}>
               {selected as string}
@@ -136,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: 1,
     borderRadius: theme.radius("default"),
     borderColor: theme.colors.get("gray", [4, 6]),
-    padding: theme.spacing("md"),
+    padding: theme.spacing("default"),
     color: theme.colors.get("gray", [8, 2]),
   },
 }));

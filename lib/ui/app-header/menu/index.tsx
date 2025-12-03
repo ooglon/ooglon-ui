@@ -50,7 +50,7 @@ export default function HeaderMenu({ children }: PropsWithChildren) {
           style={styles.backdropStyle}
         >
           <Pressable style={[styles.overlayStyle, defaultShadow]}>
-            <Flex gap={theme.spacing("md")}>{children}</Flex>
+            <Flex gap={theme.spacing("default")}>{children}</Flex>
           </Pressable>
         </Pressable>
       )}

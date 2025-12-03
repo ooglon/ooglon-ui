@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
-import { BaseTheme } from "./base-theme";
+import { BASE_THEME } from "./base-theme";
 import { buildTheme } from "./build-theme";
-import { defaultTheme } from "./default-theme";
+import { CustomTheme } from "./theme.types";
 
 interface ThemeContextProps {
   theme: ReturnType<typeof buildTheme>;
@@ -13,12 +13,12 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 interface ThemeContextProviderProps {
   children: ReactNode;
-  themeOverride?: BaseTheme;
+  customTheme?: CustomTheme;
   defaultColorScheme?: "light" | "dark";
 }
 
 export function ThemeProvider({
-  themeOverride,
+  customTheme,
   children,
   defaultColorScheme = "light",
 }: ThemeContextProviderProps) {
@@ -30,7 +30,14 @@ export function ThemeProvider({
     setColorScheme((val) => (val === "light" ? "dark" : "light"));
   };
 
-  const baseTheme = defaultTheme; //TODO: apply overrides from themeOverride, use Partial
+  const baseTheme = {
+    ...BASE_THEME,
+    ...customTheme,
+    colors: {
+      ...BASE_THEME.colors,
+      ...customTheme?.colors,
+    },
+  };
 
   const theme = useMemo(
     () => buildTheme(baseTheme, colorScheme),

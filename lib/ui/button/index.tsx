@@ -10,15 +10,15 @@ import {
 import { Flex } from "../flex";
 import { Text } from "../text";
 import { makeStyles } from "../theme";
-import { defaultColors } from "../theme/default-colors";
 import { useDisabledStyles } from "../theme/default-styles";
-import { hexToRgba } from "../theme/theme-helpers";
+import { hexToRgba } from "../theme/helpers";
+import { Colors } from "../theme/theme.types";
 
 export type ButtonProps = {
   title: string;
   variant?: "filled" | "light" | "outline" | "subtle";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
-  color?: keyof typeof defaultColors;
+  color?: keyof Colors;
   fullWidth?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;

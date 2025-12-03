@@ -1,51 +1,51 @@
-import { defaultColors } from "./default-colors";
-import { Tuple } from "./theme-helpers";
+import { BASE_COLORS } from "./colors";
+import { BaseTheme } from "./theme.types";
 
-export type BaseTheme = {
+export const BASE_THEME: BaseTheme = {
   // colors
-  colors: Record<keyof typeof defaultColors, Tuple<string, 10>>;
+  colors: BASE_COLORS,
   backgroundColor: {
-    light: string;
-    dark: string;
-  };
+    light: "gray",
+    dark: "gray",
+  },
   foregroundColor: {
-    light: string;
-    dark: string;
-  };
-  primaryColor: keyof typeof defaultColors;
+    light: "gray",
+    dark: "gray",
+  },
+  primaryColor: "blue",
   primaryShades: {
     light: {
-      background: number;
-      foreground: number;
-    };
+      background: 6,
+      foreground: 6,
+    },
     dark: {
-      background: number;
-      foreground: number;
-    };
-  };
+      background: 8,
+      foreground: 2,
+    },
+  },
 
   // typography
-  fontFamily: string;
-  baseFontSize: number;
-  defaultFontSize: "xs" | "sm" | "md" | "lg" | "xl";
+  fontFamily: "Roboto",
+  baseFontSize: 15, // React Native default
+  defaultFontSize: "md", // baseFontSize
 
   // borders
   radius: {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-  };
-  defaultRadius: "xs" | "sm" | "md" | "lg" | "xl";
+    xs: 2,
+    sm: 4,
+    md: 8,
+    lg: 16,
+    xl: 32,
+  },
+  defaultRadius: "lg",
 
   // spacing
   spacing: {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-  };
-  defaultSpacing: "xs" | "sm" | "md" | "lg" | "xl";
+    xs: 10,
+    sm: 12,
+    md: 16,
+    lg: 20,
+    xl: 32,
+  },
+  defaultSpacing: "md",
 };

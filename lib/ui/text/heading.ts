@@ -1,13 +1,13 @@
 import { TextStyle } from "react-native";
-import { Theme, useTheme } from "../theme";
+import { useTheme } from "../theme";
 
 const HEADINGS_RATIO = 1.067; // https://typescale.com/
 const HEADINGS_LINE_HEIGHT_MULTIPLIER = 1.6;
 const HEADINGS_DEFAULT_MARGIN_BOTTOM = 16; // 1rem
 const HEADINGS_FIRST_CHILD_MARGIN_TOP = 36; // 2.25rem
 
-const calcHeadingFontSize = (theme: Theme, h: number) => {
-  let headingSize = theme.fontSize;
+const calcHeadingFontSize = (baseFontSize: number, h: number) => {
+  let headingSize = baseFontSize;
 
   for (let i = 0; i < 7 - h; i++) {
     headingSize *= HEADINGS_RATIO;
@@ -37,7 +37,9 @@ export const useHeadingStyle = (
     fontWeight: "bold",
     marginBottom: HEADINGS_DEFAULT_MARGIN_BOTTOM,
     marginTop: firstChild ? 0 : HEADINGS_FIRST_CHILD_MARGIN_TOP, // apply only if this headings is not first child,
-    fontSize: calcHeadingFontSize(theme, h),
-    lineHeight: calcHeadingFontSize(theme, h) * HEADINGS_LINE_HEIGHT_MULTIPLIER,
+    fontSize: calcHeadingFontSize(theme.fontSize("default"), h),
+    lineHeight:
+      calcHeadingFontSize(theme.fontSize("default"), h) *
+      HEADINGS_LINE_HEIGHT_MULTIPLIER,
   };
 };

@@ -2,11 +2,11 @@ import t from "@/services/lang";
 
 import { Modal, useModal } from "../modal";
 import { Text } from "../text";
-import { defaultColors } from "../theme/default-colors";
+import { Colors } from "../theme/theme.types";
 
 type Options = {
   actionLabel?: string;
-  actionColor?: keyof typeof defaultColors;
+  actionColor?: keyof Colors;
   onDismiss?: () => void;
 };
 
