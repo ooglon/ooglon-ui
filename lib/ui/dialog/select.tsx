@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { TouchableOpacity } from "react-native";
 
+import { isArrayOfStrings } from "../helpers/is-array-of-strings";
 import { Modal, useModal } from "../modal";
 import { Text } from "../text";
 
@@ -46,12 +47,4 @@ export const select = <T,>(
     onDismiss: options?.onDismiss,
     closeable: options?.cancelable ?? true,
   });
-};
-
-const isArrayOfStrings = (value: any): value is string[] => {
-  if (!Array.isArray(value)) {
-    return false;
-  }
-
-  return value.every((item) => typeof item === "string");
 };

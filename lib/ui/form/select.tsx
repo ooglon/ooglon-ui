@@ -5,6 +5,7 @@ import t from "@/services/lang";
 
 import { select } from "../dialog/select";
 import { Flex } from "../flex";
+import { isArrayOfStrings } from "../helpers/is-array-of-strings";
 import { Icon } from "../icon";
 import { Text } from "../text";
 import { makeStyles } from "../theme";
@@ -140,11 +141,3 @@ const useStyles = makeStyles((theme) => ({
     color: theme.colors.get("gray", [8, 2]),
   },
 }));
-
-const isArrayOfStrings = (value: any): value is string[] => {
-  if (!Array.isArray(value)) {
-    return false;
-  }
-
-  return value.every((item) => typeof item === "string");
-};

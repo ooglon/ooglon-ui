@@ -34,11 +34,7 @@ ScrollBar:
 
 - Image (really needed? react-native image has any problem? is it replaceable by expo-image? if so, replace react-native image in the entire project)
 
-isArrayOfStrings is duplicated.
-
 Create a screen with Fullscreen wrapper (e.g. login form). Check for keyboardawarescroll need.
-
-Persist colorScheme in theme provider.
 
 Add real links to main-menu.
 
