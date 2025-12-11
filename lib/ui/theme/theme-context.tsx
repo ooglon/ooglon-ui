@@ -1,8 +1,9 @@
-import { createContext, ReactNode, useContext, useMemo, useState } from "react";
+import { createContext, ReactNode, useContext, useMemo } from "react";
 
 import { BASE_THEME } from "./base-theme";
 import { buildTheme } from "./build-theme";
 import { CustomTheme } from "./theme.types";
+import { useColorSchemeStore } from "./use-color-scheme-store";
 
 interface ThemeContextProps {
   theme: ReturnType<typeof buildTheme>;
@@ -22,12 +23,10 @@ export function ThemeProvider({
   children,
   defaultColorScheme = "light",
 }: ThemeContextProviderProps) {
-  const [colorScheme, setColorScheme] = useState<"light" | "dark">(
-    defaultColorScheme
-  );
+  const { colorScheme, setColorScheme } = useColorSchemeStore();
 
   const toggleColorScheme = () => {
-    setColorScheme((val) => (val === "light" ? "dark" : "light"));
+    setColorScheme(colorScheme === "light" ? "dark" : "light");
   };
 
   const baseTheme = {
@@ -40,7 +39,7 @@ export function ThemeProvider({
   };
 
   const theme = useMemo(
-    () => buildTheme(baseTheme, colorScheme),
+    () => buildTheme(baseTheme, colorScheme || defaultColorScheme),
     [baseTheme, colorScheme]
   );
 

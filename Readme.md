@@ -10,7 +10,7 @@ OOGLON UI Lib for React Native.
 
 3. Clean it (remove components, constants, app/\* and every non-essential folder).
 
-4. Install ui lib dependencies: `yarn add zod zustand`
+4. Install ui lib dependencies: `yarn add zod zustand` & `npx expo install @react-native-async-storage/async-storage`
 
 5. Copy UI Lib [lib/ui](lib/ui/) folder into your project root.
 
@@ -27,7 +27,6 @@ Components:
 Dialogs:
 
 - Datepicker
-- ImagePicker
 
 ScrollBar:
 
@@ -42,7 +41,5 @@ Create a screen with Fullscreen wrapper (e.g. login form). Check for keyboardawa
 Persist colorScheme in theme provider.
 
 Add real links to main-menu.
-
-Confirm if fontFamily is being applied for iOS.
 
 Add App screenshots to readme :)
