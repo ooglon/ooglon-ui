@@ -2,18 +2,19 @@ import { useFocusEffect } from "expo-router";
 import { PropsWithChildren, useCallback, useState } from "react";
 import { Dimensions, Pressable, TouchableOpacity } from "react-native";
 
+import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 import { Flex } from "../../flex";
 import { Icon } from "../../icon";
 import { makeStyles, useTheme } from "../../theme";
 import { useShadowStyle } from "../../theme/default-styles";
-import { HEADER_HEIGHT } from "../constants";
 import HeaderMenuDivider from "./divider";
 import HeaderMenuItem from "./item";
 import HeaderMenuUser from "./user";
 
 export default function HeaderMenu({ children }: PropsWithChildren) {
+  const insets = useSafeAreaInsets();
+  const styles = useStyles({ insets });
   const { theme } = useTheme();
-  const styles = useStyles();
   const { defaultShadow } = useShadowStyle();
 
   const [visible, setVisible] = useState(false);
@@ -58,7 +59,7 @@ export default function HeaderMenu({ children }: PropsWithChildren) {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
   menuTouchable: {
     padding: 8,
   },
@@ -80,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
     padding: theme.spacing("md"),
-    marginTop: HEADER_HEIGHT + 8,
+    marginTop: props.insets.top + theme.spacing("sm"),
     backgroundColor: theme.colors.background("auto"),
   },
 }));

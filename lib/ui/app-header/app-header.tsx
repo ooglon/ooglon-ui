@@ -1,19 +1,19 @@
 //@ts-ignore
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
-import Constants from "expo-constants";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, View } from "react-native";
+import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Icon } from "../icon";
 import { Text } from "../text";
 import { makeStyles, useTheme } from "../theme";
 import { useShadowStyle } from "../theme/default-styles";
-import { HEADER_HEIGHT } from "./constants";
 import HeaderMenu from "./menu";
 
 export function AppHeader(props: NativeStackHeaderProps) {
+  const insets = useSafeAreaInsets();
+  const styles = useStyles({ insets });
   const { theme } = useTheme();
-  const styles = useStyles();
   const { defaultShadow } = useShadowStyle();
 
   return (
@@ -48,14 +48,13 @@ export function AppHeader(props: NativeStackHeaderProps) {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
   container: { backgroundColor: theme.colors.background("auto") },
   inner: {
     borderBottomLeftRadius: theme.radius("default"),
     borderBottomRightRadius: theme.radius("default"),
     backgroundColor: theme.colors.background("auto", 1),
-    height: HEADER_HEIGHT,
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: props.insets.top,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
