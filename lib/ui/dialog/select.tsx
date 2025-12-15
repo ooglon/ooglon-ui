@@ -25,7 +25,7 @@ export const select = <T,>(
 
   const ModalContent = () => {
     return (
-      <Modal.Windowed>
+      <Modal.FullScreen>
         <Modal.Header title={title} />
 
         {isArrayOfStrings(data)
@@ -39,7 +39,7 @@ export const select = <T,>(
                 {data.renderItem(item, index)}
               </TouchableOpacity>
             ))}
-      </Modal.Windowed>
+      </Modal.FullScreen>
     );
   };
 

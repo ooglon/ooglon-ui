@@ -284,42 +284,6 @@ export default function _screen() {
           />
 
           <Button
-            title="Windowed Modal (Centered)"
-            onPress={() => {
-              modal.showModal(
-                <Modal.Windowed centered>
-                  <Modal.Header title="Windowed Modal (Centered)" />
-
-                  <Flex gap={0}>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Text key={index}>Modal Content {index}</Text>
-                    ))}
-                  </Flex>
-
-                  <Modal.Footer
-                    actions={[
-                      {
-                        title: t("Cancel"),
-                        variant: "subtle",
-                        color: "gray",
-                        onPress: () => {
-                          console.log("Modal Closed Automatically!");
-                        },
-                      },
-                      {
-                        title: t("Confirm"),
-                        onPress: () => {
-                          console.log("Modal Closed Automatically!");
-                        },
-                      },
-                    ]}
-                  />
-                </Modal.Windowed>
-              );
-            }}
-          />
-
-          <Button
             title="Modal with onDismiss"
             onPress={() => {
               modal.showModal(

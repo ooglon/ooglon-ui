@@ -11,16 +11,20 @@ export default function FullscreenOverlay({ children }: PropsWithChildren) {
   const styles = useStyles({ insets });
 
   return (
-    <Pressable
+    <KeyboardAwareScrollView
+      bottomOffset={insets.bottom}
       style={styles.container}
-      onPress={(e) => {
-        e.stopPropagation();
-      }}
+      contentContainerStyle={styles.contentContainer}
+      keyboardShouldPersistTaps="handled"
     >
-      <KeyboardAwareScrollView bottomOffset={insets.bottom}>
+      <Pressable
+        onPress={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Flex gap="md">{children}</Flex>
-      </KeyboardAwareScrollView>
-    </Pressable>
+      </Pressable>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -30,8 +34,6 @@ const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
   container: {
     position: "absolute",
     bottom: 0,
-    padding: theme.spacing("default"),
-    paddingBottom: props.insets.bottom,
     width: "100%",
     maxHeight: Dimensions.get("window").height - V_OFFSET - props.insets.top,
     backgroundColor: theme.colors.background("auto"),
@@ -39,5 +41,9 @@ const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
     borderTopLeftRadius: theme.radius("default"),
     borderTopRightRadius: theme.radius("default"),
     cursor: "auto",
+  },
+  contentContainer: {
+    padding: theme.spacing("default"),
+    paddingBottom: props.insets.bottom,
   },
 }));

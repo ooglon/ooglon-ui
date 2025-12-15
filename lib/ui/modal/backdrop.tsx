@@ -31,7 +31,5 @@ const useStyles = makeStyles((_, props: { transparent: boolean }) => ({
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
     zIndex: 9000,
-    justifyContent: "center",
-    alignItems: "center",
   },
 }));

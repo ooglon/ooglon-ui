@@ -16,7 +16,6 @@ export const useColorSchemeStore = create<State & Actions>()(
     (set) => ({
       colorScheme: null,
       setColorScheme: (colorScheme: "light" | "dark") => {
-        console.log(colorScheme);
         return set(() => ({
           colorScheme,
         }));
