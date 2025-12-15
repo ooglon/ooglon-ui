@@ -22,7 +22,6 @@ export default function WindowedOverlay({
       <KeyboardAwareScrollView
         bottomOffset={insets.bottom}
         style={styles.container}
-        contentContainerStyle={styles.contentContainer}
         keyboardShouldPersistTaps="handled"
       >
         <Pressable
@@ -30,38 +29,41 @@ export default function WindowedOverlay({
             e.stopPropagation();
           }}
         >
-          <Flex gap="md">{children}</Flex>
+          <Flex gap="md" style={styles.flex}>
+            {children}
+          </Flex>
         </Pressable>
       </KeyboardAwareScrollView>
     );
 
   return (
     <Pressable
-      style={[styles.container, styles.contentContainer]}
+      style={styles.container}
       onPress={(e) => {
         e.stopPropagation();
       }}
     >
-      <Flex gap="md">{children}</Flex>
+      <Flex gap="md" style={styles.flex}>
+        {children}
+      </Flex>
     </Pressable>
   );
 }
 
-const V_OFFSET = 64;
+const TOP_OFFSET = 64;
 
 const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
   container: {
     position: "absolute",
-    top: V_OFFSET,
+    top: TOP_OFFSET,
     marginHorizontal: theme.spacing("default"),
     width: Dimensions.get("window").width - theme.spacing("default") * 2,
-    maxHeight: Dimensions.get("window").height - V_OFFSET - props.insets.top,
+    maxHeight: Dimensions.get("window").height - TOP_OFFSET - props.insets.top,
     backgroundColor: theme.colors.background("auto"),
     borderRadius: theme.radius("default"),
     cursor: "auto",
   },
-  contentContainer: {
+  flex: {
     padding: theme.spacing("default"),
-    paddingBottom: props.insets.bottom,
   },
 }));
