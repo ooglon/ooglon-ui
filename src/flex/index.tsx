@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { FlexStyle, View, ViewProps } from "react-native";
+import { type ReactNode } from "react";
+import { type FlexStyle, View, type ViewProps } from "react-native";
 
 import { useTheme } from "../theme";
 

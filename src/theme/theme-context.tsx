@@ -1,8 +1,8 @@
-import { createContext, ReactNode, useContext, useMemo } from "react";
+import { createContext, type ReactNode, useContext, useMemo } from "react";
 
 import { BASE_THEME } from "./base-theme";
 import { buildTheme } from "./build-theme";
-import { CustomTheme } from "./theme.types";
+import { type CustomTheme } from "./theme.types";
 import { useColorSchemeStore } from "./use-color-scheme-store";
 
 interface ThemeContextProps {
@@ -29,19 +29,18 @@ export function ThemeProvider({
     setColorScheme(colorScheme === "light" ? "dark" : "light");
   };
 
-  const baseTheme = {
-    ...BASE_THEME,
-    ...customTheme,
-    colors: {
-      ...BASE_THEME.colors,
-      ...customTheme?.colors,
-    },
-  };
+  const theme = useMemo(() => {
+    const baseTheme = {
+      ...BASE_THEME,
+      ...customTheme,
+      colors: {
+        ...BASE_THEME.colors,
+        ...customTheme?.colors,
+      },
+    };
 
-  const theme = useMemo(
-    () => buildTheme(baseTheme, colorScheme || defaultColorScheme),
-    [baseTheme, colorScheme]
-  );
+    return buildTheme(baseTheme, colorScheme || defaultColorScheme);
+  }, [customTheme, defaultColorScheme, colorScheme]);
 
   return (
     <ThemeContext.Provider

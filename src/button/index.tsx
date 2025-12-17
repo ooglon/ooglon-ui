@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import {
-  StyleProp,
-  TextStyle,
+  type StyleProp,
+  type TextStyle,
   TouchableOpacity,
-  TouchableOpacityProps,
-  ViewStyle,
+  type TouchableOpacityProps,
+  type ViewStyle,
 } from "react-native";
 
 import { Flex } from "../flex";
@@ -12,7 +12,7 @@ import { Text } from "../text";
 import { makeStyles } from "../theme";
 import { useDisabledStyles } from "../theme/default-styles";
 import { hexToRgba } from "../theme/helpers";
-import { Colors } from "../theme/theme.types";
+import { type Colors } from "../theme/theme.types";
 
 export type ButtonProps = {
   title: string;
@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme, props: Omit<ButtonProps, "title">) => ({
   },
   light: {
     backgroundColor: hexToRgba(
-      theme.colors.get(props.color ?? "primary", "background"),
+      theme.colors.get(props.color ?? "primary", "background")!,
       theme.colorScheme === "dark" ? 0.15 : 0.1
     ),
   },

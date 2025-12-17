@@ -1,7 +1,10 @@
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 import { Dimensions, Pressable } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
-import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  type EdgeInsets,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 import { Flex } from "../../flex";
 import { makeStyles } from "../../theme";

@@ -1,5 +1,5 @@
 import { BASE_COLORS } from "./colors";
-import { BaseTheme } from "./theme.types";
+import { type BaseTheme } from "./theme.types";
 
 export const BASE_THEME: BaseTheme = {
   // colors

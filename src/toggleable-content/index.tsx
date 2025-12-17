@@ -1,22 +1,22 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Pressable,
-  StyleProp,
-  TextStyle,
+  type StyleProp,
+  type TextStyle,
   TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
+  type ViewStyle,
+} from "react-native";
 
-import { Flex, FlexProps } from '../flex';
-import { Text } from '../text';
-import { makeStyles } from '../theme';
-import { DEFAULT_STRINGS } from '../lang/default-strings';
+import { Flex, type FlexProps } from "../flex";
+import { DEFAULT_STRINGS } from "../lang/default-strings";
+import { Text } from "../text";
+import { makeStyles } from "../theme";
 
 type ToggleableContentProps = {
   header?: { open: string; closed: string };
   style?: StyleProp<ViewStyle>;
   headerStyle?: StyleProp<TextStyle>;
-  gap?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  gap?: number | "xs" | "sm" | "md" | "lg" | "xl";
   openByDefault?: boolean;
 } & FlexProps;
 
@@ -25,7 +25,7 @@ export function ToggleableContent({
   header = { open: DEFAULT_STRINGS.seeLess, closed: DEFAULT_STRINGS.seeMore },
   style,
   headerStyle,
-  gap = 'xs',
+  gap = "xs",
   openByDefault,
 }: ToggleableContentProps) {
   const styles = useStyles();
@@ -57,6 +57,6 @@ export function ToggleableContent({
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    color: theme.colors.get('gray', [6, 5]),
+    color: theme.colors.get("gray", [6, 5]),
   },
 }));

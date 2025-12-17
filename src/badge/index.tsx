@@ -1,8 +1,8 @@
-import { TextStyle, View, ViewStyle } from "react-native";
+import { type TextStyle, View, type ViewStyle } from "react-native";
 
 import { Text } from "../text";
 import { makeStyles } from "../theme";
-import { Colors } from "../theme/theme.types";
+import { type Colors } from "../theme/theme.types";
 
 type BadgeProps = {
   children: React.ReactNode;

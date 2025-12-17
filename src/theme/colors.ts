@@ -1,6 +1,6 @@
 // This resource is based on mantine.ui colors.
 
-import { Colors } from "./theme.types";
+import { type Colors } from "./theme.types";
 
 export const BASE_COLORS: Colors = {
   dark: [

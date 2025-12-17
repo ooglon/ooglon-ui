@@ -1,15 +1,15 @@
-import { ReactNode, useEffect } from 'react';
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { type ReactNode, useEffect } from "react";
+import { TouchableOpacity, type TouchableOpacityProps } from "react-native";
 
-import { select } from '../dialog/select';
-import { Flex } from '../flex';
-import { isArrayOfStrings } from '../helpers/is-array-of-strings';
-import { Icon } from '../icon';
-import { Text } from '../text';
-import { makeStyles } from '../theme';
-import { useDisabledStyles } from '../theme/default-styles';
-import FieldErrors from './field-errors';
-import { DEFAULT_STRINGS } from '../lang/default-strings';
+import { select } from "../dialog/select";
+import { Flex } from "../flex";
+import { isArrayOfStrings } from "../helpers/is-array-of-strings";
+import { Icon } from "../icon";
+import { DEFAULT_STRINGS } from "../lang/default-strings";
+import { Text } from "../text";
+import { makeStyles } from "../theme";
+import { useDisabledStyles } from "../theme/default-styles";
+import FieldErrors from "./field-errors";
 
 type SelectProps<T> = {
   onChange: (selected: T | string | null) => void;
@@ -18,7 +18,7 @@ type SelectProps<T> = {
   disabled?: boolean;
   defaultSelectedIndex?: number;
   allowDeselect?: boolean;
-  style?: TouchableOpacityProps['style'];
+  style?: TouchableOpacityProps["style"];
 } & (
   | { data: string[]; selected: string }
   | {
@@ -47,18 +47,28 @@ export function Select<T>({
     }
 
     if (isArrayOfStrings(data)) {
+      if (data.length === 0) {
+        return;
+      }
+
       if (defaultSelectedIndex !== undefined) {
-        onChange(data[defaultSelectedIndex]);
+        onChange(data[defaultSelectedIndex]!);
       } else {
-        onChange(data[0]);
+        onChange(data[0]!);
       }
     } else {
+      if (data.values.length === 0) {
+        return;
+      }
+
       if (defaultSelectedIndex !== undefined) {
-        onChange(data.values[defaultSelectedIndex]);
+        onChange(data.values[defaultSelectedIndex]!);
       } else {
-        onChange(data.values[0]);
+        onChange(data.values[0]!);
       }
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const openSelect = () => {
@@ -113,13 +123,13 @@ export function Select<T>({
                 type="material"
                 name="keyboard-arrow-up"
                 size={14}
-                style={[{ marginBottom: -4 }, disabled && disabledStyles.text]}
+                style={[styles.upperIcon, disabled && disabledStyles.text]}
               />
               <Icon
                 type="material"
                 name="keyboard-arrow-down"
                 size={14}
-                style={[{ marginTop: -4 }, disabled && disabledStyles.text]}
+                style={[styles.lowerIcon, disabled && disabledStyles.text]}
               />
             </Flex>
           </Flex>
@@ -134,9 +144,15 @@ export function Select<T>({
 const useStyles = makeStyles((theme) => ({
   input: {
     borderWidth: 1,
-    borderRadius: theme.radius('default'),
-    borderColor: theme.colors.get('gray', [4, 6]),
-    padding: theme.spacing('default'),
-    color: theme.colors.get('gray', [8, 2]),
+    borderRadius: theme.radius("default"),
+    borderColor: theme.colors.get("gray", [4, 6]),
+    padding: theme.spacing("default"),
+    color: theme.colors.get("gray", [8, 2]),
+  },
+  upperIcon: {
+    marginBottom: -4,
+  },
+  lowerIcon: {
+    marginTop: -4,
   },
 }));

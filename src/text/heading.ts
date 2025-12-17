@@ -1,4 +1,4 @@
-import { TextStyle } from "react-native";
+import { type TextStyle } from "react-native";
 import { useTheme } from "../theme";
 
 const HEADINGS_RATIO = 1.067; // https://typescale.com/
@@ -31,7 +31,7 @@ export const useHeadingStyle = (
   else if (h3) h = 3;
   else if (h4) h = 4;
 
-  if (h == 0) return {};
+  if (h === 0) return {};
 
   return {
     fontWeight: "bold",

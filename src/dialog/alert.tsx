@@ -1,7 +1,7 @@
-import { Modal, useModal } from '../modal';
-import { Text } from '../text';
-import { Colors } from '../theme/theme.types';
-import { DEFAULT_STRINGS } from '../lang/default-strings';
+import { DEFAULT_STRINGS } from "../lang/default-strings";
+import { Modal, useModal } from "../modal";
+import { Text } from "../text";
+import { type Colors } from "../theme/theme.types";
 
 type Options = {
   actionLabel?: string;

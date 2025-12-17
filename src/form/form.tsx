@@ -1,6 +1,4 @@
-import React from "react";
-
-import { Flex, FlexProps } from "../flex";
+import { Flex, type FlexProps } from "../flex";
 
 export function Form({ children, ...rest }: FlexProps) {
   return (

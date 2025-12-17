@@ -32,10 +32,7 @@ export function Checkbox({
           <View style={styles.iconContainer}>
             {checked && (
               <View
-                style={[
-                  styles.iconBackground,
-                  disabled && { backgroundColor: "transparent" },
-                ]}
+                style={[styles.iconBackground, disabled && styles.disabled]}
               />
             )}
             <Icon
@@ -78,11 +75,12 @@ const useStyles = makeStyles((theme) => ({
   },
   iconUnchecked: {
     color: theme.colors.select(
-      theme.colors.get("gray", 4),
-      theme.colors.get("gray", 6)
+      theme.colors.get("gray", 4)!,
+      theme.colors.get("gray", 6)!
     ),
   },
   label: {
     color: theme.colors.foreground("auto"),
   },
+  disabled: { backgroundColor: "transparent" },
 }));

@@ -1,15 +1,18 @@
-import { useFocusEffect } from 'expo-router';
-import { PropsWithChildren, useCallback, useState } from 'react';
-import { Dimensions, Pressable, TouchableOpacity } from 'react-native';
+import { useFocusEffect } from "expo-router";
+import { type PropsWithChildren, useCallback, useState } from "react";
+import { Dimensions, Pressable, TouchableOpacity } from "react-native";
 
-import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Flex } from '../../flex';
-import { Icon } from '../../icon';
-import { makeStyles, useTheme } from '../../theme';
-import { useShadowStyle } from '../../theme/default-styles';
-import HeaderMenuDivider from './divider';
-import HeaderMenuItem from './item';
-import HeaderMenuUser from './user';
+import {
+  type EdgeInsets,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
+import { Flex } from "../../flex";
+import { Icon } from "../../icon";
+import { makeStyles, useTheme } from "../../theme";
+import { useShadowStyle } from "../../theme/default-styles";
+import HeaderMenuDivider from "./divider";
+import HeaderMenuItem from "./item";
+import HeaderMenuUser from "./user";
 
 export default function HeaderMenu({ children }: PropsWithChildren) {
   const insets = useSafeAreaInsets();
@@ -51,7 +54,7 @@ export default function HeaderMenu({ children }: PropsWithChildren) {
           style={styles.backdropStyle}
         >
           <Pressable style={[styles.overlayStyle, defaultShadow]}>
-            <Flex gap={theme.spacing('default')}>{children}</Flex>
+            <Flex gap={theme.spacing("default")}>{children}</Flex>
           </Pressable>
         </Pressable>
       )}
@@ -64,25 +67,25 @@ const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
     padding: 8,
   },
   backdropStyle: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end',
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    justifyContent: "flex-start",
+    alignItems: "flex-end",
     backgroundColor: theme.colors.select(
-      'rgba(0, 0, 0, 0.1)',
-      'rgba(0, 0, 0, 0.25)'
+      "rgba(0, 0, 0, 0.1)",
+      "rgba(0, 0, 0, 0.25)"
     ),
   },
   overlayStyle: {
-    borderRadius: theme.radius('default'),
+    borderRadius: theme.radius("default"),
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
-    padding: theme.spacing('md'),
-    marginTop: props.insets.top + theme.spacing('sm'),
-    backgroundColor: theme.colors.background('auto'),
+    padding: theme.spacing("md"),
+    marginTop: props.insets.top + theme.spacing("sm"),
+    backgroundColor: theme.colors.background("auto"),
   },
 }));
 

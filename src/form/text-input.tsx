@@ -1,6 +1,6 @@
 import {
   TextInput as RNTextInput,
-  TextInputProps as RNTextInputProps,
+  type TextInputProps as RNTextInputProps,
 } from "react-native";
 
 import { Flex } from "../flex";

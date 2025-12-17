@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
 
 import {
   Badge,
@@ -17,36 +17,36 @@ import {
   ToggleableContent,
   useForm,
   useModal,
-} from 'ooglon-ui';
+} from "ooglon-ui";
 
-import t from '../services/lang';
-import { z } from 'zod';
+import { z } from "zod";
+import t from "../services/lang";
 
-export default function _screen() {
+export default function Screen() {
   const modal = useModal();
 
   const form = useForm({
     initialValues: {
-      email: 'disabled@email.com',
-      password: '',
+      email: "disabled@email.com",
+      password: "",
       remember: false,
       domain: null,
     },
     validations: {
-      email: z.email(t('Email inválido!')),
-      password: z.string().min(6, t('Senha muito curta!')),
+      email: z.email(t("Email inválido!")),
+      password: z.string().min(6, t("Senha muito curta!")),
       remember: z
         .boolean()
-        .refine((value) => value, t('Voce precisa marcar isto!')),
+        .refine((value) => value, t("Voce precisa marcar isto!")),
     },
     onSubmit: (values) => {
-      console.log('Screen:', values);
+      console.log("Screen:", values);
     },
   });
 
   return (
     <ScreenWrapper.Scrollable>
-      <Stack.Screen options={{ headerShown: true, title: 'Home' }} />
+      <Stack.Screen options={{ headerShown: true, title: "Home" }} />
 
       <Card>
         <Card.Header title="Dialogs & Modals Card" />
@@ -55,16 +55,16 @@ export default function _screen() {
 
         <Button
           title="Dialog.alert()"
-          onPress={() => Dialog.alert('Alert Title', 'Alert Message')}
+          onPress={() => Dialog.alert("Alert Title", "Alert Message")}
         />
 
         <Button
           title="Dialog.alert() with Options"
           onPress={() =>
-            Dialog.alert('Danger!', 'Alert danger Message', {
-              actionColor: 'red',
+            Dialog.alert("Danger!", "Alert danger Message", {
+              actionColor: "red",
               onDismiss: () => {
-                console.log('Dialog onDismiss!');
+                console.log("Dialog onDismiss!");
               },
             })
           }
@@ -73,8 +73,8 @@ export default function _screen() {
         <Button
           title="Dialog.prompt()"
           onPress={() =>
-            Dialog.prompt('Prompt Title', 'Prompt Message:', (value) => {
-              console.log('Inserted value: ', value);
+            Dialog.prompt("Prompt Title", "Prompt Message:", (value) => {
+              console.log("Inserted value: ", value);
             })
           }
         />
@@ -84,15 +84,15 @@ export default function _screen() {
             title="Dialog.prompt() with Options"
             onPress={() =>
               Dialog.prompt(
-                'Prompt Title',
-                'This prompt is not cancelable and triggers onDismiss',
+                "Prompt Title",
+                "This prompt is not cancelable and triggers onDismiss",
                 (value) => {
-                  console.log('Inserted value: ', value);
+                  console.log("Inserted value: ", value);
                 },
                 {
                   cancelable: false,
                   onDismiss: () => {
-                    console.log('Dialog onDismiss!');
+                    console.log("Dialog onDismiss!");
                   },
                 }
               )
@@ -103,14 +103,14 @@ export default function _screen() {
             title="Dialog.select() string[]"
             onPress={() =>
               Dialog.select(
-                'Select an Option (or Dismiss)',
-                ['TypeScript', 'JavaScript', 'PHP'],
+                "Select an Option (or Dismiss)",
+                ["TypeScript", "JavaScript", "PHP"],
                 (value) => {
-                  console.log('Selected:', value);
+                  console.log("Selected:", value);
                 },
                 {
                   onDismiss: () => {
-                    console.log('Optional Select onDismiss!');
+                    console.log("Optional Select onDismiss!");
                   },
                 }
               )
@@ -121,7 +121,7 @@ export default function _screen() {
             title="Dialog.select() Car[] non cancelable"
             onPress={() =>
               Dialog.select(
-                'Select an Option (Cannot Dismiss)',
+                "Select an Option (Cannot Dismiss)",
                 {
                   values: Array.from({ length: 50 }).map((_, index) => ({
                     model: `Car ${index}`,
@@ -129,6 +129,7 @@ export default function _screen() {
                     hp: 100 + Math.random() * 100,
                   })),
                   renderItem: (item, index) => (
+                    // eslint-disable-next-line react-native/no-inline-styles
                     <Flex key={index} gap="xs" style={{ marginTop: 16 }}>
                       <Text>{item.model}</Text>
                       <Text>{item.brand}</Text>
@@ -137,12 +138,12 @@ export default function _screen() {
                   ),
                 },
                 (value) => {
-                  console.log('Selected Car:', JSON.stringify(value, null, 2));
+                  console.log("Selected Car:", JSON.stringify(value, null, 2));
                 },
                 {
                   cancelable: false,
                   onDismiss: () => {
-                    console.log('Optional Select onDismiss!');
+                    console.log("Optional Select onDismiss!");
                   },
                 }
               )
@@ -164,16 +165,16 @@ export default function _screen() {
                     ))}
                   </Flex>
 
-                  <TextInput label="Email" {...form.getInputProps('email')} />
+                  <TextInput label="Email" {...form.getInputProps("email")} />
 
                   <Text fontWeight="bold">END!</Text>
 
                   <Modal.Footer
                     actions={[
                       {
-                        title: t('OK'),
+                        title: t("OK"),
                         onPress: () => {
-                          console.log('Modal Closed Automatically!');
+                          console.log("Modal Closed Automatically!");
                         },
                       },
                     ]}
@@ -199,9 +200,9 @@ export default function _screen() {
                   <Modal.Footer
                     actions={[
                       {
-                        title: t('OK'),
+                        title: t("OK"),
                         onPress: () => {
-                          console.log('Modal Closed Automatically!');
+                          console.log("Modal Closed Automatically!");
                         },
                       },
                     ]}
@@ -227,17 +228,17 @@ export default function _screen() {
                   <Modal.Footer
                     actions={[
                       {
-                        title: t('Cancel'),
-                        variant: 'subtle',
-                        color: 'gray',
+                        title: t("Cancel"),
+                        variant: "subtle",
+                        color: "gray",
                         onPress: () => {
-                          console.log('Modal Closed Automatically!');
+                          console.log("Modal Closed Automatically!");
                         },
                       },
                       {
-                        title: t('Confirm'),
+                        title: t("Confirm"),
                         onPress: () => {
-                          console.log('Modal Closed Automatically!');
+                          console.log("Modal Closed Automatically!");
                         },
                       },
                     ]}
@@ -263,17 +264,17 @@ export default function _screen() {
                   <Modal.Footer
                     actions={[
                       {
-                        title: t('Cancel'),
-                        variant: 'subtle',
-                        color: 'gray',
+                        title: t("Cancel"),
+                        variant: "subtle",
+                        color: "gray",
                         onPress: () => {
-                          console.log('Modal Closed Automatically!');
+                          console.log("Modal Closed Automatically!");
                         },
                       },
                       {
-                        title: t('Confirm'),
+                        title: t("Confirm"),
                         onPress: () => {
-                          console.log('Modal Closed Automatically!');
+                          console.log("Modal Closed Automatically!");
                         },
                       },
                     ]}
@@ -295,9 +296,9 @@ export default function _screen() {
                   <Modal.Footer
                     actions={[
                       {
-                        title: t('OK'),
+                        title: t("OK"),
                         onPress: () => {
-                          console.log('Modal Closed Automatically!');
+                          console.log("Modal Closed Automatically!");
                         },
                       },
                     ]}
@@ -305,7 +306,7 @@ export default function _screen() {
                 </Modal.Windowed>,
                 {
                   onDismiss: () => {
-                    console.log('Modal Closed, this is onDismiss!');
+                    console.log("Modal Closed, this is onDismiss!");
                   },
                 }
               );
@@ -324,16 +325,16 @@ export default function _screen() {
                   <Modal.Footer
                     actions={[
                       {
-                        title: t('Cancel'),
-                        variant: 'subtle',
-                        color: 'gray',
+                        title: t("Cancel"),
+                        variant: "subtle",
+                        color: "gray",
                         disabled: true,
                       },
                       {
-                        title: t('Accept'),
+                        title: t("Accept"),
                         onPress: () => {
                           modal.hideModal();
-                          console.log('Modal closed Manually!');
+                          console.log("Modal closed Manually!");
                         },
                       },
                     ]}
@@ -354,26 +355,26 @@ export default function _screen() {
         <Form>
           <TextInput
             label="Email"
-            {...form.getInputProps('email')}
+            {...form.getInputProps("email")}
             // disabled
           />
 
           <TextInput
             label="Password"
             secureTextEntry
-            {...form.getInputProps('password')}
+            {...form.getInputProps("password")}
           />
 
           <Checkbox
             label="Remember me"
-            {...form.getBooleanInputProps('remember')}
+            {...form.getBooleanInputProps("remember")}
             // disabled
           />
 
           <Select
-            data={['abc.com', 'xyz.com', 'asd.org']}
+            data={["abc.com", "xyz.com", "asd.org"]}
             label="Domain"
-            {...form.getSelectProps('domain')}
+            {...form.getSelectProps("domain")}
             defaultSelectedIndex={1}
             allowDeselect
             // disabled
@@ -426,7 +427,8 @@ export default function _screen() {
           </Text>
 
           <Text h4>Heading H4</Text>
-          <Text style={{ textTransform: 'capitalize' }}>
+          {/* eslint-disable-next-line react-native/no-inline-styles */}
+          <Text style={{ textTransform: "capitalize" }}>
             [customStyle with textTransform:"capitalize"] Lorem Ipsum is simply
             dummy text of the printing and typesetting industry. Lorem Ipsum has
             been the industry's standard dummy text ever since the 1500s, when
@@ -447,71 +449,73 @@ export default function _screen() {
         <Button
           title="Filled"
           variant="filled"
-          onPress={() => console.log('pressed')}
+          onPress={() => console.log("pressed")}
         />
 
         <ToggleableContent>
           <Button
             title="Light"
             variant="light"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
 
           <Button
             title="Outline"
             variant="outline"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
 
           <Button
             title="Subtle"
             variant="subtle"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
 
           <Button
             title="Button xs"
             size="xs"
             color="red"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
           <Button
             title="Button sm"
             size="sm"
             color="green"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
           <Button
             title="Button md"
             size="md"
             color="indigo"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
           <Button
             title="Button lg"
             size="lg"
             color="yellow"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
           <Button
             title="Button xl"
             size="xl"
             color="orange"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
 
           <Flex direction="row" gap={0}>
             <Button
               title="Full Width"
               fullWidth
-              onPress={() => console.log('pressed')}
+              onPress={() => console.log("pressed")}
             />
             <Button
               title="Custom Styles"
               size="md"
-              onPress={() => console.log('pressed')}
-              containerStyle={{ backgroundColor: 'pink' }}
-              textStyle={{ color: 'black', fontWeight: 'regular' }}
+              onPress={() => console.log("pressed")}
+              // eslint-disable-next-line react-native/no-inline-styles
+              containerStyle={{ backgroundColor: "pink" }}
+              // eslint-disable-next-line react-native/no-inline-styles
+              textStyle={{ color: "black", fontWeight: "regular" }}
             />
           </Flex>
 
@@ -526,13 +530,13 @@ export default function _screen() {
               />
             }
             justify="space-between"
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
 
           <Button
             title="Disabled"
             disabled
-            onPress={() => console.log('pressed')}
+            onPress={() => console.log("pressed")}
           />
         </ToggleableContent>
       </Card>

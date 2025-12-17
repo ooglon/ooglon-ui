@@ -1,4 +1,4 @@
-import { Image, ImageStyle } from "react-native";
+import { Image, type ImageStyle } from "react-native";
 
 import { makeStyles } from "../theme";
 

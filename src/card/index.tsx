@@ -1,4 +1,4 @@
-import { Flex, FlexProps } from "../flex";
+import { Flex, type FlexProps } from "../flex";
 import { makeStyles } from "../theme";
 import { useShadowStyle } from "../theme/default-styles";
 import CardDivider from "./divider";

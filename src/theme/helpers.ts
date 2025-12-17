@@ -1,4 +1,4 @@
-import { BaseTheme } from "./theme.types";
+import { type BaseTheme } from "./theme.types";
 
 /**
  *  Converts a hex color to rgba.
@@ -10,7 +10,7 @@ export const hexToRgba = (hex: string, alpha: number) => {
   hex = hex.replace(/^#/, "");
 
   if (hex.length === 3) {
-    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    hex = hex[0]! + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
   }
 
   const r = parseInt(hex.substring(0, 2), 16);

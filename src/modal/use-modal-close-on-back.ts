@@ -1,6 +1,6 @@
 import { usePreventRemove } from "@react-navigation/native";
-import { useEffect } from "react";
-import { BackHandler, NativeEventSubscription } from "react-native";
+import { useCallback, useEffect } from "react";
+import { BackHandler, type NativeEventSubscription } from "react-native";
 
 import { useModal } from "./use-modal";
 
@@ -11,13 +11,13 @@ export default function useModalCloseOnBack() {
   const modal = useModal();
   const isModalVisible = modal.content !== undefined;
 
-  const handleBackPress = () => {
+  const handleBackPress = useCallback(() => {
     if (modal.options.closeable) {
       modal.hideModal();
     }
 
     return true;
-  };
+  }, [modal]);
 
   // Use usePreventRemove for React Navigation Header Back Button
   usePreventRemove(isModalVisible, handleBackPress);

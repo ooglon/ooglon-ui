@@ -24,7 +24,7 @@ export const useColorSchemeStore = create<State & Actions>()(
     {
       name: "color-scheme",
       storage: createJSONStorage(() =>
-        Platform.OS == "web" ? localStorage : AsyncStorage
+        Platform.OS === "web" ? localStorage : AsyncStorage
       ),
     }
   )

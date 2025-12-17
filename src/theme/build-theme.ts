@@ -1,6 +1,6 @@
 import { BASE_COLORS } from "./colors";
 import { sizeToFontSize } from "./helpers";
-import { BaseTheme } from "./theme.types";
+import { type BaseTheme } from "./theme.types";
 
 export const buildTheme = (
   baseTheme: BaseTheme,

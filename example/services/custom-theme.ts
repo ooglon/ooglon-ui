@@ -1,4 +1,4 @@
-import { CustomTheme } from "@/lib/ui";
+import { type CustomTheme } from "ooglon-ui";
 
 /**
  * Custom themes can override all props of the default theme.

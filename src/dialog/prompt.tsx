@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { TextInput } from '../form';
-import { Modal, useModal } from '../modal';
-import { Text } from '../text';
-import { DEFAULT_STRINGS } from '../lang/default-strings';
+import { TextInput } from "../form";
+import { DEFAULT_STRINGS } from "../lang/default-strings";
+import { Modal, useModal } from "../modal";
+import { Text } from "../text";
 
 type PromptOptions = {
   actionLabel?: string;
@@ -19,7 +19,7 @@ export const prompt = (
   options?: PromptOptions
 ) => {
   const ModalContent = () => {
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState("");
 
     const onPress = () => {
       useModal.getState().hideModal();
@@ -38,13 +38,13 @@ export const prompt = (
           actions={[
             {
               title: options?.cancelLabel ?? DEFAULT_STRINGS.cancel,
-              variant: 'subtle',
-              color: 'gray',
+              variant: "subtle",
+              color: "gray",
               disabled: options?.cancelable === false,
               onPress: useModal.getState().hideModal,
             },
             {
-              title: options?.actionLabel ?? t('OK'),
+              title: options?.actionLabel ?? DEFAULT_STRINGS.ok,
               onPress,
             },
           ]}

@@ -1,4 +1,9 @@
-import { ColorValue, Text as RNText, StyleProp, TextStyle } from "react-native";
+import {
+  type ColorValue,
+  Text as RNText,
+  type StyleProp,
+  type TextStyle,
+} from "react-native";
 
 import { useTheme } from "../theme";
 import { useHeadingStyle } from "./heading";

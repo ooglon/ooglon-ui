@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { TouchableOpacity } from "react-native";
 
 import { isArrayOfStrings } from "../helpers/is-array-of-strings";

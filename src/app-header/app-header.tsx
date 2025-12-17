@@ -2,7 +2,10 @@
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, View } from "react-native";
-import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  type EdgeInsets,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 import { Icon } from "../icon";
 import { Text } from "../text";

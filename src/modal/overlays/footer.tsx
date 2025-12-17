@@ -1,7 +1,7 @@
-import { GestureResponderEvent } from "react-native";
+import { type GestureResponderEvent } from "react-native";
 
-import { Button, ButtonProps } from "../../button";
-import { Flex, FlexProps } from "../../flex";
+import { Button, type ButtonProps } from "../../button";
+import { Flex, type FlexProps } from "../../flex";
 import { makeStyles } from "../../theme";
 import { useModal } from "../use-modal";
 
@@ -20,7 +20,7 @@ export default function OverlayFooter({
     if (modal.options.closeable) {
       modal.hideModal();
     }
-    actions[actionIndex].onPress?.(event);
+    actions[actionIndex]!.onPress?.(event);
   };
 
   return (

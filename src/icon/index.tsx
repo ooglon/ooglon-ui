@@ -1,10 +1,10 @@
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { StyleProp, TextStyle } from "react-native";
+import { type StyleProp, type TextStyle } from "react-native";
 
 import { useTheme } from "../theme";
 
 const IconMap = {
-  material: MaterialIcons,
+  "material": MaterialIcons,
   "material-community": MaterialCommunityIcons,
 };
 

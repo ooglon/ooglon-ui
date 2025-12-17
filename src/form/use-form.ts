@@ -30,6 +30,8 @@ export function useForm({
     }
 
     setErrors((prev) => ({ ...prev, ...initialValidatedFields }));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setFieldValue = (key: string, value: any) => {

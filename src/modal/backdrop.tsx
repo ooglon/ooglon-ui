@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 import { Dimensions, Pressable } from "react-native";
 
 import { makeStyles } from "../theme";
