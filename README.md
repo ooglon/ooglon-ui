@@ -41,6 +41,16 @@ Check [example app](/example/) project.
 - [Sending a pull request](CONTRIBUTING.md#sending-a-pull-request)
 - [Code of conduct](CODE_OF_CONDUCT.md)
 
+## Lib Development
+
+To update this lib:
+
+- Make sure you have a NPM account and it has write permissions in "ooglon" organization;
+- Login to your account and generate a new Access Token with 2FA bypass enabled and @ooglon organization marked for read and write;
+- Copy your token and add it to `.npmrc`: `//registry.npmjs.org/:_authToken=YOUR_TOKEN_HERE`
+- `yarn prepare`
+- `yarn release`
+
 ## License
 
 MIT
