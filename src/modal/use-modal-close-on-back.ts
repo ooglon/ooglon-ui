@@ -1,4 +1,3 @@
-import { usePreventRemove } from "@react-navigation/native";
 import { useCallback, useEffect } from "react";
 import { BackHandler, type NativeEventSubscription } from "react-native";
 
@@ -20,7 +19,8 @@ export default function useModalCloseOnBack() {
   }, [modal]);
 
   // Use usePreventRemove for React Navigation Header Back Button
-  usePreventRemove(isModalVisible, handleBackPress);
+  // TODO: This causes a react navigation error. Check if it is really needed. It seems to work fine without because header back button is always behind the modal backdrop. If needed, an alternative can be done only using expo-router hooks: https://stackoverflow.com/a/75897807
+  // usePreventRemove(isModalVisible, handleBackPress);
 
   // Deal BackHandler for Android Physical Back Button and Swipe Back gesture
   useEffect(() => {

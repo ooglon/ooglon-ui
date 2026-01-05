@@ -8,6 +8,7 @@ Cross platform React Native UI.
 - Re-enable lefthook;
 - Test lib on empty Navigation template project;
 - Test lib in a clean empty Expo project;
+- Review use-modal-close-on-back usePreventRemove usage (currently disabled);
 
 ## Installation
 
