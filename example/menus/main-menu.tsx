@@ -1,4 +1,4 @@
-import { AppHeader, useTheme } from "ooglon-ui";
+import { AppHeader, useTheme } from "@ooglon/ooglon-ui";
 import t from "../services/lang";
 
 export default function MainMenu() {

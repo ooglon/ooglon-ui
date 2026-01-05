@@ -21,7 +21,7 @@ export type IconType =
 type IconProps = {
   size?: number;
   color?: string;
-  style?: StyleProp<TextStyle>;
+  style?: Omit<StyleProp<TextStyle>, "cursor">;
 } & IconType;
 
 export function Icon({ type, name, size = 24, color, style }: IconProps) {

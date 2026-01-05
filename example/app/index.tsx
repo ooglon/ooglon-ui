@@ -17,7 +17,7 @@ import {
   ToggleableContent,
   useForm,
   useModal,
-} from "ooglon-ui";
+} from "@ooglon/ooglon-ui";
 
 import { z } from "zod";
 import t from "../services/lang";

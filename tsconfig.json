@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "ooglon-ui": ["./src/index"]
+      "@ooglon/ooglon-ui": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

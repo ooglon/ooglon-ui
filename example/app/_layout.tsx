@@ -7,7 +7,7 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 
 import "react-native-reanimated";
 
-import { AppHeader, Modal, ThemeProvider } from "ooglon-ui";
+import { AppHeader, Modal, ThemeProvider } from "@ooglon/ooglon-ui";
 import MainMenu from "../menus/main-menu";
 
 // ----------------------------------------------------------- Root Layout:
