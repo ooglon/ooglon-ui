@@ -1,4 +1,4 @@
-import { AppHeader, useTheme } from "@ooglon/ooglon-ui";
+import { HeaderMenu, useTheme } from "@ooglon/ooglon-ui";
 import t from "../services/lang";
 
 export default function MainMenu() {
@@ -15,15 +15,12 @@ export default function MainMenu() {
   };
 
   return (
-    <AppHeader.Menu>
-      <AppHeader.Menu.User
-        name="John Doe"
-        avatarUrl="https://picsum.photos/200"
-      />
+    <HeaderMenu.Container>
+      <HeaderMenu.User name="John Doe" avatarUrl="https://picsum.photos/200" />
 
-      <AppHeader.Menu.Divider />
+      <HeaderMenu.Divider />
 
-      <AppHeader.Menu.Item
+      <HeaderMenu.Item
         icon={{ type: "material", name: "home" }}
         title={t("Início")}
         onPress={() => {
@@ -32,7 +29,7 @@ export default function MainMenu() {
         }}
       />
 
-      <AppHeader.Menu.Item
+      <HeaderMenu.Item
         icon={{ type: "material", name: "person" }}
         title={t("Meu Perfil")}
         onPress={() => {
@@ -41,7 +38,7 @@ export default function MainMenu() {
         }}
       />
 
-      <AppHeader.Menu.Item
+      <HeaderMenu.Item
         icon={{ type: "material", name: "comment" }}
         title={t("Opine sobre o App")}
         onPress={() => {
@@ -50,7 +47,7 @@ export default function MainMenu() {
         }}
       />
 
-      <AppHeader.Menu.Item
+      <HeaderMenu.Item
         icon={
           theme.colorScheme === "dark"
             ? { type: "material-community", name: "moon-waning-crescent" }
@@ -60,11 +57,11 @@ export default function MainMenu() {
         onPress={toggleColorScheme}
       />
 
-      <AppHeader.Menu.Item
+      <HeaderMenu.Item
         icon={{ type: "material", name: "logout" }}
         title={t("Sair")}
         onPress={handleLogout}
       />
-    </AppHeader.Menu>
+    </HeaderMenu.Container>
   );
 }

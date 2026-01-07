@@ -10,11 +10,8 @@ import { Flex } from "../../flex";
 import { Icon } from "../../icon";
 import { makeStyles, useTheme } from "../../theme";
 import { useShadowStyle } from "../../theme/default-styles";
-import HeaderMenuDivider from "./divider";
-import HeaderMenuItem from "./item";
-import HeaderMenuUser from "./user";
 
-export default function HeaderMenu({ children }: PropsWithChildren) {
+export default function HeaderMenuContainer({ children }: PropsWithChildren) {
   const insets = useSafeAreaInsets();
   const styles = useStyles({ insets });
   const { theme } = useTheme();
@@ -88,7 +85,3 @@ const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
     backgroundColor: theme.colors.background("auto"),
   },
 }));
-
-HeaderMenu.Divider = HeaderMenuDivider;
-HeaderMenu.Item = HeaderMenuItem;
-HeaderMenu.User = HeaderMenuUser;

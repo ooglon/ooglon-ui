@@ -1,4 +1,4 @@
-import { Stack } from "expo-router";
+import { router } from "expo-router";
 
 import {
   Badge,
@@ -8,6 +8,7 @@ import {
   Dialog,
   Flex,
   Form,
+  Header,
   Icon,
   Modal,
   ScreenWrapper,
@@ -20,6 +21,7 @@ import {
 } from "@ooglon/ooglon-ui";
 
 import { z } from "zod";
+import MainMenu from "../menus/main-menu";
 import t from "../services/lang";
 
 export default function Screen() {
@@ -46,7 +48,21 @@ export default function Screen() {
 
   return (
     <ScreenWrapper.Scrollable>
-      <Stack.Screen options={{ headerShown: true, title: "Home" }} />
+      <Header.Default title="Home" menu={<MainMenu />} />
+
+      <Card>
+        <Card.Header title="ScreenWrappers Card" />
+
+        <Button
+          title="Open ScreenWrapper.Fullscreen"
+          onPress={() => router.push("/screen-wrappers/fullscreen")}
+        />
+
+        <Button
+          title="Open ScreenWrapper.Scrollable"
+          onPress={() => router.push("/screen-wrappers/scrollable")}
+        />
+      </Card>
 
       <Card>
         <Card.Header title="Dialogs & Modals Card" />

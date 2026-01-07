@@ -1,14 +1,13 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 
 import "react-native-reanimated";
 
-import { AppHeader, Modal, ThemeProvider } from "@ooglon/ooglon-ui";
-import MainMenu from "../menus/main-menu";
+import { Modal, ThemeProvider } from "@ooglon/ooglon-ui";
+import { Stack } from "expo-router";
 
 // ----------------------------------------------------------- Root Layout:
 
@@ -20,18 +19,7 @@ function RootLayout() {
   return (
     <KeyboardProvider>
       <ThemeProvider defaultColorScheme="dark">
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            // eslint-disable-next-line react/no-unstable-nested-components
-            header: (props: any) => <AppHeader {...props} />,
-            // eslint-disable-next-line react/no-unstable-nested-components
-            headerRight: () => <MainMenu />,
-            headerBackVisible: true,
-            animation: "fade",
-          }}
-        />
-
+        <Stack />
         <Modal />
       </ThemeProvider>
     </KeyboardProvider>

@@ -11,9 +11,8 @@ import { Icon } from "../icon";
 import { Text } from "../text";
 import { makeStyles, useTheme } from "../theme";
 import { useShadowStyle } from "../theme/default-styles";
-import HeaderMenu from "./menu";
 
-export function AppHeader(props: NativeStackHeaderProps) {
+export function CustomHeader(props: NativeStackHeaderProps) {
   const insets = useSafeAreaInsets();
   const styles = useStyles({ insets });
   const { theme } = useTheme();
@@ -68,5 +67,3 @@ const useStyles = makeStyles((theme, props: { insets: EdgeInsets }) => ({
   },
   back: { marginRight: 16 },
 }));
-
-AppHeader.Menu = HeaderMenu;

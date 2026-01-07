@@ -25,8 +25,9 @@ export default function Fullscreen({
     <KeyboardAwareScrollView
       bottomOffset={insets.bottom}
       style={styles.container}
+      contentContainerStyle={styles.contentContainer}
     >
-      <Flex gap={gap ?? theme.spacing("default")} style={styles.padding}>
+      <Flex gap={gap ?? theme.spacing("default")} style={styles.flex}>
         {children}
       </Flex>
     </KeyboardAwareScrollView>
@@ -44,10 +45,14 @@ const useStyles = makeStyles(
     container: {
       flex: 1,
       backgroundColor: theme.colors.background("auto"),
+    },
+    contentContainer: {
+      flex: 1,
       justifyContent: props.center ? "center" : undefined,
       alignItems: props.center ? "center" : undefined,
     },
-    padding: {
+    flex: {
+      width: "100%",
       padding:
         props.padding !== "none"
           ? theme.spacing(props.padding ?? "default")
