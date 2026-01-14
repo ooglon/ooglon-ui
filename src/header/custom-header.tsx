@@ -1,6 +1,5 @@
 //@ts-ignore
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
-import { StatusBar } from "expo-status-bar";
 import { Pressable, View } from "react-native";
 import {
   type EdgeInsets,
@@ -20,8 +19,6 @@ export function CustomHeader(props: NativeStackHeaderProps) {
 
   return (
     <View style={styles.container}>
-      <StatusBar style={theme.colorScheme === "dark" ? "light" : "dark"} />
-
       <View style={[styles.inner, defaultShadow]}>
         {props.navigation.canGoBack() && props.options.headerBackVisible ? (
           <Pressable

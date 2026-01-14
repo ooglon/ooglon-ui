@@ -6,7 +6,7 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 
 import "react-native-reanimated";
 
-import { Modal, ThemeProvider } from "@ooglon/ooglon-ui";
+import { Modal, ThemedStatusBar, ThemeProvider } from "@ooglon/ooglon-ui";
 import { Stack } from "expo-router";
 
 // ----------------------------------------------------------- Root Layout:
@@ -19,7 +19,15 @@ function RootLayout() {
   return (
     <KeyboardProvider>
       <ThemeProvider defaultColorScheme="dark">
-        <Stack />
+        <ThemedStatusBar />
+
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            animation: "fade",
+          }}
+        />
+
         <Modal />
       </ThemeProvider>
     </KeyboardProvider>
