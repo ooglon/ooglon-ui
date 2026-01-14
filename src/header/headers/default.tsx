@@ -5,10 +5,15 @@ import { CustomHeader } from "../custom-header";
 
 type DefaultHeaderProps = {
   title: string;
+  headerBackVisible?: boolean;
   menu?: React.ReactNode;
 };
 
-export function DefaultHeader({ title, menu }: DefaultHeaderProps) {
+export function DefaultHeader({
+  title,
+  headerBackVisible = true,
+  menu,
+}: DefaultHeaderProps) {
   const styles = useStyles();
 
   return (
@@ -21,7 +26,7 @@ export function DefaultHeader({ title, menu }: DefaultHeaderProps) {
         header: (props: any) => <CustomHeader {...props} />,
         // eslint-disable-next-line react/no-unstable-nested-components
         headerRight: () => menu || <View style={styles.noMenu} />,
-        headerBackVisible: true,
+        headerBackVisible,
       }}
     />
   );
