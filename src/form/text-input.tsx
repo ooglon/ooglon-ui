@@ -32,6 +32,7 @@ export function TextInput({
         style={[styles.input, disabled && disabledStyles.text]}
         editable={!disabled}
         {...rest}
+        placeholderTextColor={styles.placeholder.color}
       />
 
       <FieldErrors errors={errors} />
@@ -46,5 +47,8 @@ const useStyles = makeStyles((theme) => ({
     borderColor: theme.colors.get("gray", [4, 6]),
     padding: theme.spacing("default"),
     color: theme.colors.get("gray", [8, 2]),
+  },
+  placeholder: {
+    color: theme.colors.get("gray", [4, 6]),
   },
 }));
