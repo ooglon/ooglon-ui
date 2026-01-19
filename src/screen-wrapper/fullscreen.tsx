@@ -2,6 +2,7 @@ import { type PropsWithChildren } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { View } from "react-native";
 import { Flex } from "../flex";
 import { makeStyles, useTheme } from "../theme";
 
@@ -9,6 +10,7 @@ type FullscreenProps = {
   center?: boolean;
   padding?: "xs" | "sm" | "md" | "lg" | "xl" | "none";
   gap?: number | "xs" | "sm" | "md" | "lg" | "xl";
+  keyboardAware?: boolean;
 } & PropsWithChildren;
 
 export default function Fullscreen({
@@ -16,21 +18,31 @@ export default function Fullscreen({
   center = false,
   padding,
   gap,
+  keyboardAware = true,
 }: FullscreenProps) {
   const { theme } = useTheme();
   const insets = useSafeAreaInsets();
   const styles = useStyles({ padding, center });
 
+  if (keyboardAware)
+    return (
+      <KeyboardAwareScrollView
+        bottomOffset={insets.bottom}
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+      >
+        <Flex gap={gap ?? theme.spacing("default")} style={styles.flex}>
+          {children}
+        </Flex>
+      </KeyboardAwareScrollView>
+    );
+
   return (
-    <KeyboardAwareScrollView
-      bottomOffset={insets.bottom}
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
+    <View style={[styles.container, styles.contentContainer]}>
       <Flex gap={gap ?? theme.spacing("default")} style={styles.flex}>
         {children}
       </Flex>
-    </KeyboardAwareScrollView>
+    </View>
   );
 }
 
